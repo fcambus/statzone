@@ -4,7 +4,7 @@
 /* http://www.statdns.com                                                    */
 /*                                                                           */
 /* Created: 2012/02/13                                                       */
-/* Last Updated: 2015/08/02                                                  */
+/* Last Updated: 2015/08/09                                                  */
 /*                                                                           */
 /* StatZone is released under the BSD 3-Clause license.                      */
 /* See LICENSE file for details.                                             */
@@ -30,7 +30,7 @@ type Domains struct {
 
 var rrParsed int
 
-// Return rdata
+/* Return rdata */
 func rdata(RR dns.RR) string {
 	return strings.Replace(RR.String(), RR.Header().String(), "", -1)
 }
@@ -40,11 +40,18 @@ func main() {
                    StatZone (c) by Frederic Cambus 2012-2015
 -------------------------------------------------------------------------------`
 
+	fmt.Println(header + "\n")
+
+	/* Check input parameters and show usage */
+	if len(os.Args) != 2 {
+		fmt.Println("USAGE:    statzone inputfile\n")
+		fmt.Println("EXAMPLES: statzone arpa.zone\n")
+		os.Exit(1)
+	}
+
 	inputFile := os.Args[1]
 
-	fmt.Println(header)
-
-	fmt.Println("\nParsing zone :", inputFile)
+	fmt.Println("Parsing zone :", inputFile)
 
 	domains := new(Domains)
 
