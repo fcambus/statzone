@@ -2,6 +2,25 @@
 
 StatZone is a DNS zone file analyzer targeted at TLD zones.
 
+## Requirements
+
+StatZone requires the following Go libraries :
+
+- dns : DNS library in Go - https://github.com/miekg/dns
+
+## Installation
+
+Build and install with the `go` tool, all dependencies will be automatically fetched and compiled :
+
+	go get -d -v ./... && go build -v ./...
+	go install statzone
+
+## Usage 
+
+StatZone takes the zone file to analyze as parameter :
+
+	statzone zonefile
+
 ## Features
 
 Currently implemented features :
