@@ -130,8 +130,8 @@ func main() {
 	fmt.Println("\n---[ Creating result files ]---------------------------------------------------\n")
 
 	/* Creating name servers list + number of zones served */
-	fmt.Println("Creating :", inputFile + ".csv")
-	outputFile, outputError := os.OpenFile(inputFile + ".csv", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0666)
+	fmt.Println("Creating :", inputFile+".csv")
+	outputFile, outputError := os.OpenFile(inputFile+".csv", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0666)
 	if outputError != nil {
 		fmt.Printf("ERROR : Can't create output file.\n")
 		return
