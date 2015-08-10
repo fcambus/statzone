@@ -1,0 +1,3 @@
+- Use Go idna package to check if a domain is an IDN instead of the current string comparison
+- Add flags to enable/disable options
+- Output JSON data?
