@@ -32,6 +32,8 @@ Currently implemented features :
 - Counting IDNs domains
 - Counting domains
 
+- Outputting name servers list + number of zones served for each name server
+
 ## License
 
 StatZone is released under the BSD 3-Clause license. See `LICENSE` file for details.

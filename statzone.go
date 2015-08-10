@@ -4,7 +4,7 @@
 /* http://www.statdns.com                                                    */
 /*                                                                           */
 /* Created: 2012/02/13                                                       */
-/* Last Updated: 2015/08/09                                                  */
+/* Last Updated: 2015/08/10                                                  */
 /*                                                                           */
 /* StatZone is released under the BSD 3-Clause license.                      */
 /* See LICENSE file for details.                                             */
@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"github.com/miekg/dns"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -125,6 +126,26 @@ func main() {
 
 	fmt.Println("IDNs : ", domains.idn)
 	fmt.Println("NS : ", len(ns))
+
+	fmt.Println("\n---[ Creating result files ]---------------------------------------------------\n")
+
+	/* Creating name servers list + number of zones served */
+	fmt.Println("Creating :", inputFile + ".csv")
+	outputFile, outputError := os.OpenFile(inputFile + ".csv", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0666)
+	if outputError != nil {
+		fmt.Printf("ERROR : Can't create output file.\n")
+		return
+	}
+
+	defer outputFile.Close()
+
+	outputWriter := bufio.NewWriter(outputFile)
+
+	for item := range ns {
+		outputWriter.WriteString(strings.ToLower(strings.TrimRight(item, ".")) + ";" + strconv.Itoa(ns[item]) + "\n")
+	}
+
+	outputWriter.Flush()
 
 	fmt.Println("\n---[ CSV values ]--------------------------------------------------------------\n")
 
