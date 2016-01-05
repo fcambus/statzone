@@ -1,10 +1,11 @@
 /*****************************************************************************/
 /*                                                                           */
-/* StatZone (c) by Frederic Cambus 2012-2015                                 */
+/* StatZone                                                                  */
+/* Copyright (c) 2012-2016, Frederic Cambus                                  */
 /* http://www.statdns.com                                                    */
 /*                                                                           */
-/* Created: 2012/02/13                                                       */
-/* Last Updated: 2015/08/10                                                  */
+/* Created: 2012-02-13                                                       */
+/* Last Updated: 2016-01-05                                                  */
 /*                                                                           */
 /* StatZone is released under the BSD 3-Clause license.                      */
 /* See LICENSE file for details.                                             */
@@ -38,7 +39,7 @@ func rdata(RR dns.RR) string {
 
 func main() {
 	header := `-------------------------------------------------------------------------------
-                   StatZone (c) by Frederic Cambus 2012-2015
+                   StatZone (c) by Frederic Cambus 2012-2016
 -------------------------------------------------------------------------------`
 
 	fmt.Println(header + "\n")
