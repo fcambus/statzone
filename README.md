@@ -1,6 +1,6 @@
 # StatZone
 
-StatZone is a DNS zone file analyzer targeted at TLD zones.
+StatZone is a DNS zone file analyzer targeted at TLD zones. It is currently used to generate TLD Zone File Statistics on [StatDNS](http://www.statdns.com).
 
 ## Requirements
 
@@ -20,6 +20,8 @@ Build and install with the `go` tool, all dependencies will be automatically fet
 StatZone takes the zone file to analyze as parameter :
 
 	statzone zonefile
+
+Public zones (arpa, root) can be found on : ftp://ftp.internic.net/domain/
 
 ## Features
 

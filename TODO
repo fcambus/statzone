@@ -1,4 +1,5 @@
-- Use Go idna package to check if a domain is an IDN instead of the current string comparison
+- Use Go idna package to check if a domain is an IDN instead of the current string comparison,
+  or Go DNS punycode functions
 - Add flags to enable/disable options
 - Calculate average domain name length
 - Distribution of lengths for all domains in a zone
