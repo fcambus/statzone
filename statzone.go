@@ -5,9 +5,9 @@
 /* http://www.statdns.com                                                    */
 /*                                                                           */
 /* Created: 2012-02-13                                                       */
-/* Last Updated: 2016-01-05                                                  */
+/* Last Updated: 2016-07-18                                                  */
 /*                                                                           */
-/* StatZone is released under the BSD 3-Clause license.                      */
+/* StatZone is released under the BSD 2-Clause license.                      */
 /* See LICENSE file for details.                                             */
 /*                                                                           */
 /*****************************************************************************/

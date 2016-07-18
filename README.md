@@ -38,7 +38,7 @@ Currently implemented features :
 
 ## License
 
-StatZone is released under the BSD 3-Clause license. See `LICENSE` file for details.
+StatZone is released under the BSD 2-Clause license. See `LICENSE` file for details.
 
 ## Author
 
