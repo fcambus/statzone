@@ -1,11 +1,11 @@
 /*****************************************************************************/
 /*                                                                           */
 /* StatZone                                                                  */
-/* Copyright (c) 2012-2016, Frederic Cambus                                  */
+/* Copyright (c) 2012-2017, Frederic Cambus                                  */
 /* http://www.statdns.com                                                    */
 /*                                                                           */
 /* Created: 2012-02-13                                                       */
-/* Last Updated: 2016-07-18                                                  */
+/* Last Updated: 2017-02-03                                                  */
 /*                                                                           */
 /* StatZone is released under the BSD 2-Clause license.                      */
 /* See LICENSE file for details.                                             */
