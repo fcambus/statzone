@@ -38,12 +38,6 @@ func rdata(RR dns.RR) string {
 }
 
 func main() {
-	header := `-------------------------------------------------------------------------------
-                   StatZone (c) by Frederic Cambus 2012-2016
--------------------------------------------------------------------------------`
-
-	fmt.Println(header + "\n")
-
 	/* Check input parameters and show usage */
 	if len(os.Args) != 2 {
 		fmt.Println("USAGE:    statzone inputfile\n")
