@@ -53,7 +53,7 @@ func main() {
 
 	inputFile := os.Args[1]
 
-	fmt.Println("Parsing zone :", inputFile)
+	fmt.Println("Parsing zone:", inputFile)
 
 	domains := new(Domains)
 
@@ -62,7 +62,7 @@ func main() {
 
 	zoneFile, err := os.Open(inputFile)
 	if err != nil {
-		fmt.Println("ERROR : Can't open zone file.")
+		fmt.Println("ERROR: Can't open zone file.")
 	}
 
 	zone := dns.ParseZone(bufio.NewReader(zoneFile), "", "")
@@ -102,7 +102,7 @@ func main() {
 				}
 			}
 		} else {
-			fmt.Println("ERROR : A problem occured while parsing the zone file.")
+			fmt.Println("ERROR: A problem occured while parsing the zone file.")
 		}
 
 		/* Increment number of resource records parsed */
@@ -117,24 +117,24 @@ func main() {
 	for loop := 0; loop < len(rrtypes); loop++ {
 		rrtype := rrtypes[loop]
 		if rrtype != 0 {
-			fmt.Println(dns.TypeToString[uint16(loop)], "records :", rrtype)
+			fmt.Println(dns.TypeToString[uint16(loop)], "records:", rrtype)
 		}
 	}
 
 	fmt.Println("\n---[ Results ]-----------------------------------------------------------------\n")
-	fmt.Println("Domains : ", domains.count)
-	fmt.Println("DNSSEC Signed : ", len(signed))
+	fmt.Println("Domains: ", domains.count)
+	fmt.Println("DNSSEC Signed: ", len(signed))
 
-	fmt.Println("IDNs : ", domains.idn)
-	fmt.Println("NS : ", len(ns))
+	fmt.Println("IDNs: ", domains.idn)
+	fmt.Println("NS: ", len(ns))
 
 	fmt.Println("\n---[ Creating result files ]---------------------------------------------------\n")
 
 	/* Creating name servers list + number of zones served */
-	fmt.Println("Creating :", inputFile+".csv")
+	fmt.Println("Creating:", inputFile+".csv")
 	outputFile, outputError := os.OpenFile(inputFile+".csv", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0666)
 	if outputError != nil {
-		fmt.Printf("ERROR : Can't create output file.\n")
+		fmt.Printf("ERROR: Can't create output file.\n")
 		return
 	}
 

@@ -4,28 +4,28 @@ StatZone is a DNS zone file analyzer targeted at TLD zones. It is currently used
 
 ## Requirements
 
-StatZone requires the following Go libraries :
+StatZone requires the following Go libraries:
 
-- dns : DNS library in Go - https://github.com/miekg/dns
+- dns: DNS library in Go - https://github.com/miekg/dns
 
 ## Installation
 
-Build and install with the `go` tool, all dependencies will be automatically fetched and compiled :
+Build and install with the `go` tool, all dependencies will be automatically fetched and compiled:
 
 	go get -d -v ./... && go build -v ./...
 	go install statzone
 
 ## Usage 
 
-StatZone takes the zone file to analyze as parameter :
+StatZone takes the zone file to analyze as parameter:
 
 	statzone zonefile
 
-Public zones (arpa, root) can be found on : ftp://ftp.internic.net/domain/
+Public zones (arpa, root) can be found on: ftp://ftp.internic.net/domain/
 
 ## Features
 
-Currently implemented features :
+Currently implemented features:
 
 - Counting IPv4 and IPv6 glue
 - Counting name servers (total and unique)
@@ -42,7 +42,7 @@ StatZone is released under the BSD 2-Clause license. See `LICENSE` file for deta
 
 ## Author
 
-StatZone is developed by Frederic Cambus
+StatZone is developed by Frederic Cambus.
 
 - Site : http://www.cambus.net
 - Twitter: http://twitter.com/fcambus
