@@ -15,7 +15,7 @@ Build and install with the `go` tool, all dependencies will be automatically fet
 	go get -d -v ./... && go build -v ./...
 	go install statzone
 
-## Usage 
+## Usage
 
 StatZone takes the zone file to analyze as parameter:
 
