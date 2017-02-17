@@ -1,6 +1,6 @@
 # StatZone
 
-StatZone is a DNS zone file analyzer targeted at TLD zones. It is currently used to generate TLD Zone File Statistics on [StatDNS](http://www.statdns.com).
+StatZone is a DNS zone file analyzer targeted at TLD zones. It is currently used to generate TLD Zone File Statistics on [StatDNS](https://www.statdns.com).
 
 ## Requirements
 

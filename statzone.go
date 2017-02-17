@@ -2,10 +2,10 @@
 /*                                                                           */
 /* StatZone                                                                  */
 /* Copyright (c) 2012-2017, Frederic Cambus                                  */
-/* http://www.statdns.com                                                    */
+/* https://www.statdns.com                                                   */
 /*                                                                           */
 /* Created: 2012-02-13                                                       */
-/* Last Updated: 2017-02-03                                                  */
+/* Last Updated: 2017-02-17                                                  */
 /*                                                                           */
 /* StatZone is released under the BSD 2-Clause license.                      */
 /* See LICENSE file for details.                                             */
