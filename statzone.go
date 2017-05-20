@@ -5,7 +5,7 @@
 /* https://www.statdns.com                                                   */
 /*                                                                           */
 /* Created: 2012-02-13                                                       */
-/* Last Updated: 2017-02-17                                                  */
+/* Last Updated: 2017-05-20                                                  */
 /*                                                                           */
 /* StatZone is released under the BSD 2-Clause license.                      */
 /* See LICENSE file for details.                                             */
@@ -61,7 +61,7 @@ func main() {
 
 	zone := dns.ParseZone(bufio.NewReader(zoneFile), "", "")
 
-	var rrtypes [100]int
+	var rrtypes [65536]int
 
 	for parsedLine := range zone {
 		if parsedLine.RR != nil {
