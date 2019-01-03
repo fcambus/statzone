@@ -23,6 +23,7 @@
 
 #include "compat.h"
 #include "config.h"
+#include "strtolower.h"
 
 struct timespec begin, end, elapsed;
 
@@ -48,6 +49,7 @@ displayUsage() {
 int
 main(int argc, char *argv[]) {
 	char *token = NULL;
+	char *token_lc = NULL;
 
 	while ((getoptFlag = getopt(argc, argv, "hv")) != -1) {
 		switch(getoptFlag) {
@@ -98,6 +100,22 @@ main(int argc, char *argv[]) {
 			token = strtok(lineBuffer, " \t");
 
 			while (token) {
+				token_lc = strtolower(token);
+				if (!strcmp(token_lc, "nsec")) {
+					token = NULL;
+					continue;
+				}
+
+				if (!strcmp(token_lc, "nsec3")) {
+					token = NULL;
+					continue;
+				}
+
+				if (!strcmp(token_lc, "rrsig")) {
+					token = NULL;
+					continue;
+				}
+
 				token = strtok(NULL, " \t");
 			}
 		}
