@@ -92,7 +92,7 @@ main(int argc, char *argv[]) {
 	}
 
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, zoneFile)) {
-		if (lineBuffer)
+		if (*lineBuffer)
 			results.processedLines++;
 	}
 
