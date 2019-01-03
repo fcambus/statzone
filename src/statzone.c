@@ -116,6 +116,22 @@ main(int argc, char *argv[]) {
 					continue;
 				}
 
+				if (!strcmp(token_lc, "a")) {
+					results.a++;
+				}
+
+				if (!strcmp(token_lc, "aaaa")) {
+					results.aaaa++;
+				}
+
+				if (!strcmp(token_lc, "ds")) {
+					results.ds++;
+				}
+
+				if (!strcmp(token_lc, "ns")) {
+					results.ns++;
+				}
+
 				token = strtok(NULL, " \t");
 			}
 		}
