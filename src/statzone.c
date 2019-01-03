@@ -21,6 +21,7 @@
 #include <string.h>
 #include <time.h>
 
+#include "compat.h"
 #include "config.h"
 
 struct timespec begin, end, elapsed;
