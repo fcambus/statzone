@@ -47,6 +47,8 @@ displayUsage() {
 
 int
 main(int argc, char *argv[]) {
+	char *token = NULL;
+
 	while ((getoptFlag = getopt(argc, argv, "hv")) != -1) {
 		switch(getoptFlag) {
 
@@ -92,8 +94,15 @@ main(int argc, char *argv[]) {
 	}
 
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, zoneFile)) {
-		if (*lineBuffer)
-			results.processedLines++;
+		if (*lineBuffer) {
+			token = strtok(lineBuffer, " \t");
+
+			while (token) {
+				token = strtok(NULL, " \t");
+			}
+		}
+
+		results.processedLines++;
 	}
 
 	/* Stopping timer */
