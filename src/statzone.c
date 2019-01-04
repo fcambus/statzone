@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-01-03
+ * Last Updated: 2019-01-04
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -20,6 +20,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+
+#include <uthash.h>
 
 #include "compat.h"
 #include "config.h"

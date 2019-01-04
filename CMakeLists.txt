@@ -4,7 +4,7 @@
 # https://www.statdns.com
 #
 # Created: 2012-02-13
-# Last Updated: 2019-01-03
+# Last Updated: 2019-01-04
 #
 # StatZone is released under the BSD 2-Clause license
 # See LICENSE file for details.
@@ -19,6 +19,10 @@ include(GNUInstallDirs)
 
 # Additional include directories for compat functions
 include_directories("compat")
+
+# uthash
+find_path(UTHASH_INCLUDE_DIRS uthash.h)
+include_directories(${UTHASH_INCLUDE_DIRS})
 
 set(SRC src/statzone.c src/strtolower.c)
 
