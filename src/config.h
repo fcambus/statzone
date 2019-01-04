@@ -15,9 +15,7 @@
 
 #define VERSION "StatZone 1.0.0"
 
-enum {
-	LINE_LENGTH_MAX = 65536
-};
+#define LINE_LENGTH_MAX 65536
 
 struct results {
 	uint64_t processedLines;
