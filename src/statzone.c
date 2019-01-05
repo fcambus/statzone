@@ -41,6 +41,7 @@ int8_t getoptFlag;
 char *intputFile;
 
 char *domain;
+char *previousDomain = "";
 
 struct my_struct {
     char *domain;
@@ -153,6 +154,13 @@ main(int argc, char *argv[]) {
 
 				if (!strcmp(token_lc, "ns")) {
 					results.ns++;
+
+					if (strncmp(domain, previousDomain, strlen(domain))) {
+						results.domains++;
+						previousDomain = strdup(domain);
+                                		if (!strncmp(domain, "xn--", 4))
+							results.idn++;
+					}
 				}
 
 				token = strtok(NULL, " \t");
@@ -161,6 +169,9 @@ main(int argc, char *argv[]) {
 
 		results.processedLines++;
 	}
+
+	/* Don't count origin */
+	results.domains--;
 
 	/* Stopping timer */
 	clock_gettime(CLOCK_MONOTONIC, &end);
