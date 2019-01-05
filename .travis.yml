@@ -5,7 +5,7 @@ compiler:
   - gcc
 
 before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y uthash
+  - git clone https://github.com/troydhanson/uthash
+  - sudo cp uthash/src/* /usr/local/include
 
 script: cmake . && make
