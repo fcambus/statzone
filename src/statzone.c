@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-01-04
+ * Last Updated: 2019-01-05
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -41,6 +41,14 @@ int8_t getoptFlag;
 char *intputFile;
 
 char *domain;
+
+struct my_struct {
+    char *domain;
+    UT_hash_handle hh;
+};
+
+struct my_struct *signedDomains = NULL;
+struct my_struct *ds;
 
 void
 displayUsage() {
@@ -133,6 +141,14 @@ main(int argc, char *argv[]) {
 
 				if (!strcmp(token_lc, "ds")) {
 					results.ds++;
+
+					HASH_FIND_STR(signedDomains, domain, ds);
+
+					if (!ds) {
+						ds = malloc(sizeof(struct my_struct));
+						ds->domain = domain;
+						HASH_ADD_STR(signedDomains, domain, ds);
+					}
 				}
 
 				if (!strcmp(token_lc, "ns")) {
