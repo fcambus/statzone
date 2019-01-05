@@ -40,6 +40,8 @@ int8_t getoptFlag;
 
 char *intputFile;
 
+char *domain;
+
 void
 displayUsage() {
 	printf("USAGE: statzone [options] inputfile\n\n" \
@@ -100,6 +102,9 @@ main(int argc, char *argv[]) {
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, zoneFile)) {
 		if (*lineBuffer) {
 			token = strtok(lineBuffer, " \t");
+			
+			if (token)
+				domain = strtolower(token);
 
 			while (token) {
 				token_lc = strtolower(token);
