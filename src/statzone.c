@@ -180,7 +180,18 @@ main(int argc, char *argv[]) {
 	results.runtime = elapsed.tv_sec + elapsed.tv_nsec / 1E9;
 
 	/* Printing results */
-	fprintf(stderr, "Processed %" PRIu64 " lines in %f seconds\n", results.processedLines, results.runtime);
+	fprintf(stderr, "Processed %" PRIu64 " lines in %f seconds\n\n", results.processedLines, results.runtime);
+
+	/* Printing CVS values */
+	fprintf(stderr, "---[ CSV values ]--------------------------------------------------------------\n");
+	fprintf(stderr, "IPv4 Glue ; IPv6 Glue ; NS ; Unique NS ; DS ; Signed ; IDNs ; Domains\n");
+	fprintf(stderr, "%" PRIu64 " ; ", results.a);
+	fprintf(stderr, "%" PRIu64 " ; ", results.aaaa);
+	fprintf(stderr, "%" PRIu64 " ; ", results.ns);
+	fprintf(stderr, "%" PRIu64 " ; ", results.ds);
+	fprintf(stderr, "%" PRIu64 " ; ", HASH_COUNT(signedDomains));
+	fprintf(stderr, "%" PRIu64 " ; ", results.idn);
+	fprintf(stderr, "%" PRIu64, results.domains);
 
 	/* Clean up */
 	fclose(zoneFile);
