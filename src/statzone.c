@@ -193,7 +193,7 @@ main(int argc, char *argv[]) {
 	fprintf(stderr, "%" PRIu64 " ; ", results.aaaa);
 	fprintf(stderr, "%" PRIu64 " ; ", results.ns);
 	fprintf(stderr, "%" PRIu64 " ; ", results.ds);
-	fprintf(stderr, "%" PRIu64 " ; ", HASH_COUNT(signedDomains));
+	fprintf(stderr, "%u ; ", HASH_COUNT(signedDomains));
 	fprintf(stderr, "%" PRIu64 " ; ", results.idn);
 	fprintf(stderr, "%" PRIu64, results.domains);
 
