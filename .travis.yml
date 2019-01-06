@@ -7,5 +7,21 @@ compiler:
 before_install:
   - git clone https://github.com/troydhanson/uthash
   - sudo cp uthash/src/* /usr/local/include
+  - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
 
 script: cmake . && make
+
+env:
+  global:
+    - secure: "o06sTXUCtxytq8raAymG2ECT6ji4E6yo/FZU3NqiNuVpV/NgrOEW1oPB/vBAT7vZVlwrSJr/yGQrbvV3hiUbvUhFkBTNvpf2yM23qu4OMvUAATDJng/sVAjg3KtUCX7EgTsFu2nVpdMVITW1CY0tS++pWOXvSgQln4c0eNNVlQlcfU+GIC9MZYrj9Yzu/hyqsJJoaTt4SqNZ7RslePmnOeW/w4qJvjt76pBd4SZ1XE49Lo1z/Cm52OHdIMsgkce2NVCAljvCTqqYwGbYZZuF4wmyLCPkilZ2xU0R3iNBSoErPF7tzn1U5cr9zoc+9RKYrgsCEmPWqtFqd78aVlDB9laDmsE/9HJCq4+0MhlIsuTIHUxP6k6oBOIhmlQTPzk2eVtrKIdklccYN8rVMe4bWpKeK2xgRQYuGLJyUPoCbMxviUKSb9901A4F9lSsCs87/4iOuQ9/xHk1vdG0LtLJsT/mw97LbWHwjWem9D5bl2mj9cvjnvZIoQZo3W4mdhUY8p4OrCrgpuua0upXaPALH/svbOLFAt9F7Mu7fJI6Ra9iO+iFmX8hIipBQm+NMHVch9I44wklbL+dUyxAEdaeFMfDMuS4E0/Fn3eEqzcuLIRVZcZJHLs9fGI0rEgv4eBHLbIncb8+1SSMfy2wLHW2xALMUREwFYQH3+n4pXTii0E="
+
+addons:
+  coverity_scan:
+    project:
+      name: "fcambus/statzone"
+      version: 1.0.0
+      description: "DNS zone file analyzer targeted at TLD zones"
+    notification_email: fred@statdns.com
+    build_command_prepend: cmake .
+    build_command: make -j 4
+    branch_pattern: c
