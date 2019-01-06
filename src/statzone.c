@@ -4,14 +4,13 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-01-05
+ * Last Updated: 2019-01-06
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
  */
 
 #define _POSIX_C_SOURCE 199309L
-#define _XOPEN_SOURCE 700
 
 #include <sys/stat.h>
 #include <sys/time.h>
