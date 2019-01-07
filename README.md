@@ -1,19 +1,12 @@
 # StatZone
 
-StatZone is a DNS zone file analyzer targeted at TLD zones. It is currently used to generate TLD Zone File Statistics on [StatDNS](https://www.statdns.com).
+StatZone is a DNS zone file analyzer targeted at TLD zones.
+
+It is currently used to generate TLD Zone File Statistics on [StatDNS][5].
 
 ## Requirements
 
-StatZone requires the following Go libraries:
-
-- dns: DNS library in Go - https://github.com/miekg/dns
-
 ## Installation
-
-Build and install with the `go` tool, all dependencies will be automatically fetched and compiled:
-
-	go get -d -v ./... && go build -v ./...
-	go install statzone
 
 ## Usage
 
@@ -38,7 +31,8 @@ Currently implemented features:
 
 ## License
 
-StatZone is released under the BSD 2-Clause license. See `LICENSE` file for details.
+StatZone is released under the BSD 2-Clause license. See `LICENSE` file for
+details.
 
 ## Author
 
@@ -49,3 +43,9 @@ StatZone is developed by Frederic Cambus.
 ## Resources
 
 GitHub: https://github.com/fcambus/statzone
+
+[1]: https://api.travis-ci.org/fcambus/statzone.png?branch=master
+[2]: https://travis-ci.org/fcambus/statzone
+[3]: https://scan.coverity.com/projects/17599/badge.svg
+[4]: https://scan.coverity.com/projects/17599
+[5]: https://www.statdns.com
