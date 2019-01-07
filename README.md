@@ -1,5 +1,7 @@
 # StatZone
 
+[![Build Status][1]][2] [![Coverity Scan Build Status][3]][4]
+
 StatZone is a DNS zone file analyzer targeted at TLD zones.
 
 It is currently used to generate TLD Zone File Statistics on [StatDNS][5].
