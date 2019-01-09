@@ -199,16 +199,16 @@ main(int argc, char *argv[]) {
 	fprintf(stderr, "Processed %" PRIu64 " lines in %f seconds\n\n", results.processedLines, results.runtime);
 
 	/* Printing CVS values */
-	fprintf(stderr, "---[ CSV values ]--------------------------------------------------------------\n");
-	fprintf(stderr, "IPv4 Glue ; IPv6 Glue ; NS ; Unique NS ; DS ; Signed ; IDNs ; Domains\n");
-	fprintf(stderr, "%" PRIu64 " ; ", results.a);
-	fprintf(stderr, "%" PRIu64 " ; ", results.aaaa);
-	fprintf(stderr, "%" PRIu64 " ; ", results.ns);
-	fprintf(stderr, "%u ; ", HASH_COUNT(uniqueNS));
-	fprintf(stderr, "%" PRIu64 " ; ", results.ds);
-	fprintf(stderr, "%u ; ", HASH_COUNT(signedDomains));
-	fprintf(stderr, "%" PRIu64 " ; ", results.idn);
-	fprintf(stderr, "%" PRIu64, results.domains);
+	fprintf(stdout, "---[ CSV values ]--------------------------------------------------------------\n");
+	fprintf(stdout, "IPv4 Glue ; IPv6 Glue ; NS ; Unique NS ; DS ; Signed ; IDNs ; Domains\n");
+	fprintf(stdout, "%" PRIu64 " ; ", results.a);
+	fprintf(stdout, "%" PRIu64 " ; ", results.aaaa);
+	fprintf(stdout, "%" PRIu64 " ; ", results.ns);
+	fprintf(stdout, "%u ; ", HASH_COUNT(uniqueNS));
+	fprintf(stdout, "%" PRIu64 " ; ", results.ds);
+	fprintf(stdout, "%u ; ", HASH_COUNT(signedDomains));
+	fprintf(stdout, "%" PRIu64 " ; ", results.idn);
+	fprintf(stdout, "%" PRIu64, results.domains);
 
 	/* Clean up */
 	fclose(zoneFile);
