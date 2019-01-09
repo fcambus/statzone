@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-01-06
+ * Last Updated: 2019-01-09
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -45,6 +45,7 @@ char *intputFile;
 
 char *domain;
 char *previousDomain = "";
+char *rdata;
 
 struct my_struct {
     char *domain;
@@ -53,6 +54,8 @@ struct my_struct {
 
 struct my_struct *signedDomains = NULL;
 struct my_struct *ds;
+struct my_struct *uniqueNS = NULL;
+struct my_struct *ns;
 
 void
 displayUsage() {
@@ -164,6 +167,16 @@ main(int argc, char *argv[]) {
                                 		if (!strncmp(domain, "xn--", 4))
 							results.idn++;
 					}
+
+					rdata = strtok(NULL, "\n");
+
+					HASH_FIND_STR(uniqueNS, rdata, ns);
+
+					if (!ns) {
+						ns = malloc(sizeof(struct my_struct));
+						ns->domain = strdup(rdata);
+						HASH_ADD_STR(uniqueNS, domain, ns);
+					}
 				}
 
 				token = strtok(NULL, " \t");
@@ -191,6 +204,7 @@ main(int argc, char *argv[]) {
 	fprintf(stderr, "%" PRIu64 " ; ", results.a);
 	fprintf(stderr, "%" PRIu64 " ; ", results.aaaa);
 	fprintf(stderr, "%" PRIu64 " ; ", results.ns);
+	fprintf(stderr, "%u ; ", HASH_COUNT(uniqueNS));
 	fprintf(stderr, "%" PRIu64 " ; ", results.ds);
 	fprintf(stderr, "%u ; ", HASH_COUNT(signedDomains));
 	fprintf(stderr, "%" PRIu64 " ; ", results.idn);
