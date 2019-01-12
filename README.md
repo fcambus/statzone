@@ -1,10 +1,10 @@
 # StatZone
 
-[![Build Status][1]][2] [![Coverity Scan Build Status][3]][4]
+[![Build Status][1]][2]
 
 StatZone is a DNS zone file analyzer targeted at TLD zones.
 
-It is currently used to generate TLD Zone File Statistics on [StatDNS][5].
+It is currently used to generate TLD Zone File Statistics on [StatDNS][3].
 
 ## Requirements
 
@@ -48,6 +48,4 @@ GitHub: https://github.com/fcambus/statzone
 
 [1]: https://api.travis-ci.org/fcambus/statzone.png?branch=master
 [2]: https://travis-ci.org/fcambus/statzone
-[3]: https://scan.coverity.com/projects/17599/badge.svg
-[4]: https://scan.coverity.com/projects/17599
-[5]: https://www.statdns.com
+[3]: https://www.statdns.com
