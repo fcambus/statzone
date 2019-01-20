@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-01-09
+ * Last Updated: 2019-01-20
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -115,6 +115,12 @@ main(int argc, char *argv[]) {
 	}
 
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, zoneFile)) {
+		if (*lineBuffer == ';') /* Comments */
+			continue;
+
+		if (*lineBuffer == '$') /* Directives */
+			continue;
+
 		if (*lineBuffer) {
 			token = strtok(lineBuffer, " \t");
 			
