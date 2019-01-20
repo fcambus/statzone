@@ -4,7 +4,7 @@
 # https://www.statdns.com
 #
 # Created: 2012-02-13
-# Last Updated: 2019-01-04
+# Last Updated: 2019-01-20
 #
 # StatZone is released under the BSD 2-Clause license
 # See LICENSE file for details.
@@ -17,6 +17,10 @@ project (statzone C)
 include(CheckFunctionExists)
 include(GNUInstallDirs)
 
+# Check if system has pledge
+list(APPEND CMAKE_REQUIRED_DEFINITIONS -D_OPENBSD_SOURCE)
+check_function_exists(pledge HAVE_PLEDGE)
+
 # Additional include directories for compat functions
 include_directories("compat")
 
@@ -25,6 +29,10 @@ find_path(UTHASH_INCLUDE_DIRS uthash.h)
 include_directories(${UTHASH_INCLUDE_DIRS})
 
 set(SRC src/statzone.c src/strtolower.c)
+
+if(NOT HAVE_PLEDGE)
+  set (SRC ${SRC} compat/pledge.c)
+endif()
 
 add_definitions(-Wall -Wextra -std=c99 -pedantic)
 add_executable(statzone ${SRC})

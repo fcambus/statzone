@@ -1,6 +1,10 @@
 #ifndef COMPAT_H
 #define COMPAT_H
 
+#ifndef HAVE_PLEDGE
+#include "pledge.h"
+#endif
+
 #ifndef timespecsub
 #define	timespecsub(tsp, usp, vsp)					\
 	do {								\

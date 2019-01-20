@@ -70,6 +70,10 @@ main(int argc, char *argv[]) {
 	char *token = NULL;
 	char *token_lc = NULL;
 
+	if (pledge("stdio rpath", NULL) == -1) {
+		err(1, "pledge");
+	}
+
 	while ((getoptFlag = getopt(argc, argv, "hv")) != -1) {
 		switch(getoptFlag) {
 
