@@ -10,7 +10,7 @@
  * See LICENSE file for details.
  */
 
-#define _POSIX_C_SOURCE 199309L
+#define _POSIX_C_SOURCE 200809L
 
 #include <sys/stat.h>
 #include <sys/time.h>
