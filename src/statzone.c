@@ -180,12 +180,14 @@ main(int argc, char *argv[]) {
 
 					rdata = strtok(NULL, "\n");
 
-					HASH_FIND_STR(uniqueNS, rdata, ns);
+					if (rdata) {
+						HASH_FIND_STR(uniqueNS, rdata, ns);
 
-					if (!ns) {
-						ns = malloc(sizeof(struct my_struct));
-						ns->domain = strdup(rdata);
-						HASH_ADD_STR(uniqueNS, domain, ns);
+						if (!ns) {
+							ns = malloc(sizeof(struct my_struct));
+							ns->domain = strdup(rdata);
+							HASH_ADD_STR(uniqueNS, domain, ns);
+						}
 					}
 				}
 
