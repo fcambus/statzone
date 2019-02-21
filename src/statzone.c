@@ -171,7 +171,8 @@ main(int argc, char *argv[]) {
 				if (!strcmp(token_lc, "ns")) {
 					results.ns++;
 
-					if (strncmp(domain, previousDomain, strlen(domain))) {
+					if (strlen(previousDomain) != strlen(domain) ||
+					    strncmp(domain, previousDomain, strlen(domain))) {
 						results.domains++;
 						previousDomain = strdup(domain);
                                 		if (!strncmp(domain, "xn--", 4))
