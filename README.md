@@ -17,6 +17,9 @@ StatZone uses the CMake build system and requires uthash header files.
         cmake ..
         make
 
+StatZone has been sucessfully built and tested on OpenBSD and Linux with
+both Clang and GCC.
+
 ## Usage
 
         statzone [-hv] file
@@ -42,8 +45,6 @@ Currently implemented features:
 - Counting DNSSEC signed domains
 - Counting IDNs domains
 - Counting domains
-
-- Outputting name servers list + number of zones served for each name server
 
 ## License
 
