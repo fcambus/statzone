@@ -135,17 +135,17 @@ main(int argc, char *argv[]) {
 
 			while (token) {
 				token_lc = strtolower(token);
-				if (!strcmp(token_lc, "nsec")) {
+				if (token_count && !strcmp(token_lc, "nsec")) {
 					token = NULL;
 					continue;
 				}
 
-				if (!strcmp(token_lc, "nsec3")) {
+				if (token_count && !strcmp(token_lc, "nsec3")) {
 					token = NULL;
 					continue;
 				}
 
-				if (!strcmp(token_lc, "rrsig")) {
+				if (token_count && !strcmp(token_lc, "rrsig")) {
 					token = NULL;
 					continue;
 				}
