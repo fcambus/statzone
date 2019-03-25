@@ -6,15 +6,29 @@ StatZone is a DNS zone file analyzer targeted at TLD zones.
 
 It is currently used to generate TLD Zone File Statistics on [StatDNS][3].
 
-## Requirements
+## Dependencies
 
-## Installation
+StatZone uses the CMake build system and requires uthash header files.
+
+## Building
+
+        mkdir build
+        cd build
+        cmake ..
+        make
 
 ## Usage
 
-StatZone takes the zone file to analyze as parameter:
+        statzone [-hv] file
 
-	statzone zonefile
+If file is a single dash (`-'), statzone reads from the standard input.
+
+Options are:
+
+        -h Display usage
+        -v Display version
+
+StatZone outputs results to **stdout**.
 
 Public zones (arpa, root) can be found on: ftp://ftp.internic.net/domain/
 
