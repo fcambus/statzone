@@ -69,6 +69,7 @@ int
 main(int argc, char *argv[]) {
 	char *token = NULL;
 	char *token_lc = NULL;
+	int token_count;
 
 	if (pledge("stdio rpath", NULL) == -1) {
 		err(1, "pledge");
@@ -126,8 +127,9 @@ main(int argc, char *argv[]) {
 			continue;
 
 		if (*lineBuffer) {
+			token_count = 0;
 			token = strtok(lineBuffer, " \t");
-			
+
 			if (token)
 				domain = strtolower(token);
 
@@ -193,6 +195,7 @@ main(int argc, char *argv[]) {
 				}
 
 				token = strtok(NULL, " \t");
+				token_count++;
 			}
 		}
 
