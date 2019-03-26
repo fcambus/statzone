@@ -33,7 +33,8 @@ Options are:
 
 StatZone outputs results to **stdout**.
 
-Public zones (arpa, root) can be found on: ftp://ftp.internic.net/domain/
+TLD zone files for .arpa can be found on Internic FTP site[4], .se and
+.nu zones are available through AXFR at zonedata.iis.se.
 
 ## Features
 
@@ -64,3 +65,4 @@ GitHub: https://github.com/fcambus/statzone
 [1]: https://api.travis-ci.org/fcambus/statzone.png?branch=master
 [2]: https://travis-ci.org/fcambus/statzone
 [3]: https://www.statdns.com
+[4]: ftp://ftp.internic.net/domain/
