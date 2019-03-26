@@ -158,7 +158,7 @@ main(int argc, char *argv[]) {
 					results.aaaa++;
 				}
 
-				if (!strcmp(token_lc, "ds")) {
+				if (token_count && !strcmp(token_lc, "ds")) {
 					results.ds++;
 
 					HASH_FIND_STR(signedDomains, domain, ds);
