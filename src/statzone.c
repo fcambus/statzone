@@ -150,11 +150,11 @@ main(int argc, char *argv[]) {
 					continue;
 				}
 
-				if (!strcmp(token_lc, "a")) {
+				if (token_count && !strcmp(token_lc, "a")) {
 					results.a++;
 				}
 
-				if (!strcmp(token_lc, "aaaa")) {
+				if (token_count && !strcmp(token_lc, "aaaa")) {
 					results.aaaa++;
 				}
 
