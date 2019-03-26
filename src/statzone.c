@@ -134,6 +134,11 @@ main(int argc, char *argv[]) {
 				domain = strtolower(token);
 
 			while (token) {
+				if (*token == ';') { /* Comments */
+					token = NULL;
+					continue;
+				}
+
 				token_lc = strtolower(token);
 				if (token_count && !strcmp(token_lc, "nsec")) {
 					token = NULL;
