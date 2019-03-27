@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-01-20
+ * Last Updated: 2019-03-27
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -217,7 +217,7 @@ main(int argc, char *argv[]) {
 	results.runtime = elapsed.tv_sec + elapsed.tv_nsec / 1E9;
 
 	/* Printing results */
-	fprintf(stderr, "Processed %" PRIu64 " lines in %f seconds\n\n", results.processedLines, results.runtime);
+	fprintf(stderr, "Processed %" PRIu64 " lines in %f seconds.\n\n", results.processedLines, results.runtime);
 
 	/* Printing CVS values */
 	fprintf(stdout, "---[ CSV values ]--------------------------------------------------------------\n");
