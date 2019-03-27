@@ -170,7 +170,7 @@ main(int argc, char *argv[]) {
 
 					if (!ds) {
 						ds = malloc(sizeof(struct my_struct));
-						ds->domain = domain;
+						ds->domain = strdup(domain);
 						HASH_ADD_STR(signedDomains, domain, ds);
 					}
 				}
