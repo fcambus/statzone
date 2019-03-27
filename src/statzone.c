@@ -188,7 +188,7 @@ main(int argc, char *argv[]) {
 
 					rdata = strtok(NULL, "\n");
 
-					if (strchr(rdata, ' '))
+					if (rdata && strchr(rdata, ' '))
 						rdata = strtok(NULL, "\n");
 
 					if (rdata) {
