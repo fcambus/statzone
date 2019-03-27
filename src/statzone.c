@@ -211,7 +211,8 @@ main(int argc, char *argv[]) {
 	}
 
 	/* Don't count origin */
-	results.domains--;
+	if (results.domains)
+		results.domains--;
 
 	/* Stopping timer */
 	clock_gettime(CLOCK_MONOTONIC, &end);
