@@ -188,6 +188,9 @@ main(int argc, char *argv[]) {
 
 					rdata = strtok(NULL, "\n");
 
+					if (strchr(rdata, ' '))
+						rdata = strtok(NULL, "\n");
+
 					if (rdata) {
 						HASH_FIND_STR(uniqueNS, rdata, ns);
 
