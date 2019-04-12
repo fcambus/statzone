@@ -13,6 +13,6 @@
 #ifndef STRTOLOWER_H
 #define STRTOLOWER_H
 
-char	*strtolower(char *);
+char *strtolower(char *);
 
 #endif /* STRTOLOWER_H */

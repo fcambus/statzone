@@ -12,9 +12,6 @@
 
 #define _POSIX_C_SOURCE 200809L
 
-#include <sys/stat.h>
-#include <sys/time.h>
-#include <sys/types.h>
 #include <err.h>
 #include <getopt.h>
 #include <inttypes.h>
@@ -22,6 +19,9 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
 #include <time.h>
 
 #include <uthash.h>
@@ -48,8 +48,8 @@ char *previousDomain = "";
 char *rdata;
 
 struct my_struct {
-    char *domain;
-    UT_hash_handle hh;
+	char *domain;
+	UT_hash_handle hh;
 };
 
 struct my_struct *signedDomains = NULL;
@@ -60,9 +60,9 @@ struct my_struct *ns;
 void
 displayUsage() {
 	printf("USAGE: statzone [options] inputfile\n\n" \
-	       "Options are:\n\n" \
-	       "	-h Display usage\n" \
-	       "	-v Display version\n");
+	    "Options are:\n\n" \
+	    "	-h Display usage\n" \
+	    "	-v Display version\n");
 }
 
 int
@@ -76,7 +76,7 @@ main(int argc, char *argv[]) {
 	}
 
 	while ((getoptFlag = getopt(argc, argv, "hv")) != -1) {
-		switch(getoptFlag) {
+		switch (getoptFlag) {
 
 		case 'h':
 			displayUsage();
@@ -169,7 +169,7 @@ main(int argc, char *argv[]) {
 					HASH_FIND_STR(signedDomains, domain, ds);
 
 					if (!ds) {
-						ds = malloc(sizeof(struct my_struct));
+						ds = malloc(sizeof (struct my_struct));
 						ds->domain = strdup(domain);
 						HASH_ADD_STR(signedDomains, domain, ds);
 					}
@@ -182,7 +182,7 @@ main(int argc, char *argv[]) {
 					    strncmp(domain, previousDomain, strlen(domain))) {
 						results.domains++;
 						previousDomain = strdup(domain);
-                                		if (!strncmp(domain, "xn--", 4))
+						if (!strncmp(domain, "xn--", 4))
 							results.idn++;
 					}
 
@@ -195,7 +195,7 @@ main(int argc, char *argv[]) {
 						HASH_FIND_STR(uniqueNS, rdata, ns);
 
 						if (!ns) {
-							ns = malloc(sizeof(struct my_struct));
+							ns = malloc(sizeof (struct my_struct));
 							ns->domain = strdup(rdata);
 							HASH_ADD_STR(uniqueNS, domain, ns);
 						}
