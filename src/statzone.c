@@ -15,12 +15,12 @@
 #include <err.h>
 #include <getopt.h>
 #include <inttypes.h>
-#include <stdbool.h>
-#include <stdint.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/time.h>
+#include <sys/select.h>
 #include <sys/types.h>
 #include <time.h>
 
