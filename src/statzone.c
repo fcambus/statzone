@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-03-27
+ * Last Updated: 2019-05-09
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -80,11 +80,11 @@ main(int argc, char *argv[]) {
 
 		case 'h':
 			displayUsage();
-			return 0;
+			return EXIT_SUCCESS;
 
 		case 'v':
 			printf("%s\n", VERSION);
-			return 0;
+			return EXIT_SUCCESS;
 		}
 	}
 
@@ -92,7 +92,7 @@ main(int argc, char *argv[]) {
 		intputFile = argv[optind];
 	} else {
 		displayUsage();
-		return 0;
+		return EXIT_SUCCESS;
 	}
 
 	argc -= optind;
@@ -109,14 +109,14 @@ main(int argc, char *argv[]) {
 		/* Attempt to read from file */
 		if (!(zoneFile = fopen(intputFile, "r"))) {
 			perror("Can't open log file");
-			return 1;
+			return EXIT_FAILURE;
 		}
 	}
 
 	/* Get log file size */
 	if (fstat(fileno(zoneFile), &zoneFileStat)) {
 		perror("Can't stat log file");
-		return 1;
+		return EXIT_FAILURE;
 	}
 
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, zoneFile)) {
@@ -238,5 +238,5 @@ main(int argc, char *argv[]) {
 	/* Clean up */
 	fclose(zoneFile);
 
-	return 0;
+	return EXIT_SUCCESS;
 }
