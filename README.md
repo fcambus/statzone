@@ -17,7 +17,7 @@ StatZone uses the CMake build system and requires uthash header files.
         cmake ..
         make
 
-StatZone has been sucessfully built and tested on OpenBSD and Linux with
+StatZone has been successfully built and tested on OpenBSD and Linux with
 both Clang and GCC.
 
 ## Usage
