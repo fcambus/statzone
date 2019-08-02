@@ -44,7 +44,7 @@ int8_t getoptFlag;
 char *intputFile;
 
 char *domain;
-char *previousDomain = "";
+char *previousDomain;
 char *rdata;
 
 struct my_struct {
@@ -119,6 +119,8 @@ main(int argc, char *argv[]) {
 		return EXIT_FAILURE;
 	}
 
+	previousDomain = strdup("");
+
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, zoneFile)) {
 		if (*lineBuffer == ';') /* Comments */
 			continue;
@@ -181,6 +183,7 @@ main(int argc, char *argv[]) {
 					if (strlen(previousDomain) != strlen(domain) ||
 					    strncmp(domain, previousDomain, strlen(domain))) {
 						results.domains++;
+						free(previousDomain);
 						previousDomain = strdup(domain);
 						if (!strncmp(domain, "xn--", 4))
 							results.idn++;
