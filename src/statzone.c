@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-05-09
+ * Last Updated: 2019-09-28
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -23,6 +23,15 @@
 #include <sys/select.h>
 #include <sys/types.h>
 #include <time.h>
+
+#if defined(__linux__)
+#include <sys/prctl.h>
+#include <sys/syscall.h>
+#include <linux/audit.h>
+#include <linux/filter.h>
+#include <linux/seccomp.h>
+#include "seccomp.h"
+#endif
 
 #include <uthash.h>
 
@@ -74,6 +83,11 @@ main(int argc, char *argv[]) {
 	if (pledge("stdio rpath", NULL) == -1) {
 		err(1, "pledge");
 	}
+
+#if defined(__linux__)
+	prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0);
+	prctl(PR_SET_SECCOMP, SECCOMP_MODE_FILTER, &statzone);
+#endif
 
 	while ((getoptFlag = getopt(argc, argv, "hv")) != -1) {
 		switch (getoptFlag) {
