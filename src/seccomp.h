@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-09-28
+ * Last Updated: 2019-10-25
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -31,8 +31,13 @@ static struct sock_filter filter[] = {
 	BPF_STMT(BPF_RET+BPF_K, SECCOMP_RET_ALLOW),
 	BPF_JUMP(BPF_JMP+BPF_JEQ+BPF_K, SYS_ioctl, 0, 1),
 	BPF_STMT(BPF_RET+BPF_K, SECCOMP_RET_ALLOW),
+#if defined(SYS_open)
 	BPF_JUMP(BPF_JMP+BPF_JEQ+BPF_K, SYS_open, 0, 1),
 	BPF_STMT(BPF_RET+BPF_K, SECCOMP_RET_ALLOW),
+#else
+	BPF_JUMP(BPF_JMP+BPF_JEQ+BPF_K, SYS_openat, 0, 1),
+	BPF_STMT(BPF_RET+BPF_K, SECCOMP_RET_ALLOW),
+#endif
 	BPF_JUMP(BPF_JMP+BPF_JEQ+BPF_K, SYS_read, 0, 1),
 	BPF_STMT(BPF_RET+BPF_K, SECCOMP_RET_ALLOW),
 	BPF_JUMP(BPF_JMP+BPF_JEQ+BPF_K, SYS_writev, 0, 1),
