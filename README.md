@@ -6,6 +6,10 @@ StatZone is a DNS zone file analyzer targeted at TLD zones.
 
 It is currently used to generate TLD Zone File Statistics on [StatDNS][3].
 
+StatZone is written with security in mind and is running sandboxed on OpenBSD
+(using pledge) and on Linux (using seccomp). It has also been extensively
+fuzzed using AFL and Honggfuzz.
+
 ## Dependencies
 
 StatZone uses the CMake build system and requires uthash header files.
