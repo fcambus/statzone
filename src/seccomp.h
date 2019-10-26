@@ -4,11 +4,14 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-10-25
+ * Last Updated: 2019-10-26
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
  */
+
+#ifndef SECCOMP_H
+#define SECCOMP_H
 
 #include <stddef.h>
 #include <sys/prctl.h>
@@ -45,3 +48,5 @@ struct sock_fprog statzone = {
 	.len = sizeof(filter)/sizeof(filter[0]),
 	.filter = filter
 };
+
+#endif /* SECCOMP_H */
