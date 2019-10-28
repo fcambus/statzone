@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-10-25
+ * Last Updated: 2019-10-28
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -85,8 +85,15 @@ main(int argc, char *argv[]) {
 	}
 
 #ifdef HAVE_SECCOMP
-	prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0);
-	prctl(PR_SET_SECCOMP, SECCOMP_MODE_FILTER, &statzone);
+	if (prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0)) {
+		perror("Can't initialize seccomp");
+		return EXIT_FAILURE;
+	}
+
+	if (prctl(PR_SET_SECCOMP, SECCOMP_MODE_FILTER, &statzone)) {
+		perror("Can't load seccomp filter");
+		return EXIT_FAILURE;
+	}
 #endif
 
 	while ((getoptFlag = getopt(argc, argv, "hv")) != -1) {
