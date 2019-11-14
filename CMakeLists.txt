@@ -4,7 +4,7 @@
 # https://www.statdns.com
 #
 # Created: 2012-02-13
-# Last Updated: 2019-10-26
+# Last Updated: 2019-11-14
 #
 # StatZone is released under the BSD 2-Clause license
 # See LICENSE file for details.
@@ -17,19 +17,25 @@ project (statzone C)
 include(CheckFunctionExists)
 include(GNUInstallDirs)
 
+# Conditional build options
+set(ENABLE_SECCOMP 1
+    CACHE BOOL "Enable building with seccomp")
+
 # Check if system has pledge
 list(APPEND CMAKE_REQUIRED_DEFINITIONS -D_OPENBSD_SOURCE)
 check_function_exists(pledge HAVE_PLEDGE)
 
-# Check if system has seccomp
-message(STATUS "Looking for seccomp")
-find_path(SECCOMP NAMES "linux/seccomp.h")
-if(SECCOMP)
-  message(STATUS "Looking for seccomp - found")
-  add_definitions(-DHAVE_SECCOMP=1)
-else()
-  message(STATUS "Looking for seccomp - not found")
-endif()
+if(ENABLE_SECCOMP)
+  # Check if system has seccomp
+  message(STATUS "Looking for seccomp")
+  find_path(SECCOMP NAMES "linux/seccomp.h")
+  if(SECCOMP)
+    message(STATUS "Looking for seccomp - found")
+    add_definitions(-DHAVE_SECCOMP=1)
+  else()
+    message(STATUS "Looking for seccomp - not found")
+  endif()
+endif(ENABLE_SECCOMP)
 
 # Additional include directories for compat functions
 include_directories("compat")
