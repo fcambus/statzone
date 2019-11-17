@@ -4,7 +4,7 @@
 # https://www.statdns.com
 #
 # Created: 2012-02-13
-# Last Updated: 2019-11-14
+# Last Updated: 2019-11-17
 #
 # StatZone is released under the BSD 2-Clause license
 # See LICENSE file for details.
@@ -18,7 +18,7 @@ include(CheckFunctionExists)
 include(GNUInstallDirs)
 
 # Conditional build options
-set(ENABLE_SECCOMP 1
+set(ENABLE_SECCOMP 0
     CACHE BOOL "Enable building with seccomp")
 
 # Check if system has pledge
