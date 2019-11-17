@@ -53,7 +53,7 @@ endif()
 add_definitions(-Wall -Wextra -std=c99 -pedantic)
 add_executable(statzone ${SRC})
 
-install(TARGETS statzone DESTINATION bin)
+install(TARGETS statzone DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 enable_testing()
 add_test(statzone statzone)
