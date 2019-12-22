@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-10-28
+ * Last Updated: 2019-12-22
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -257,7 +257,7 @@ main(int argc, char *argv[]) {
 	fprintf(stdout, "%" PRIu64 " ; ", results.ds);
 	fprintf(stdout, "%u ; ", HASH_COUNT(signedDomains));
 	fprintf(stdout, "%" PRIu64 " ; ", results.idn);
-	fprintf(stdout, "%" PRIu64, results.domains);
+	fprintf(stdout, "%" PRIu64 "\n", results.domains);
 
 	/* Clean up */
 	fclose(zoneFile);
