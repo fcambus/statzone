@@ -244,9 +244,6 @@ main(int argc, char *argv[]) {
 	timespecsub(&end, &begin, &elapsed);
 	results.runtime = elapsed.tv_sec + elapsed.tv_nsec / 1E9;
 
-	/* Printing results */
-	fprintf(stderr, "Processed %" PRIu64 " lines in %f seconds.\n\n", results.processedLines, results.runtime);
-
 	/* Printing CVS values */
 	fprintf(stdout, "---[ CSV values ]--------------------------------------------------------------\n");
 	fprintf(stdout, "IPv4 Glue ; IPv6 Glue ; NS ; Unique NS ; DS ; Signed ; IDNs ; Domains\n");
@@ -258,6 +255,9 @@ main(int argc, char *argv[]) {
 	fprintf(stdout, "%u ; ", HASH_COUNT(signedDomains));
 	fprintf(stdout, "%" PRIu64 " ; ", results.idn);
 	fprintf(stdout, "%" PRIu64 "\n", results.domains);
+
+	/* Printing results */
+	fprintf(stderr, "Processed %" PRIu64 " lines in %f seconds.\n", results.processedLines, results.runtime);
 
 	/* Clean up */
 	fclose(zoneFile);
