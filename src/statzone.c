@@ -122,21 +122,21 @@ main(int argc, char *argv[]) {
 	/* Starting timer */
 	clock_gettime(CLOCK_MONOTONIC, &begin);
 
-	/* Open log file */
+	/* Open zone file */
 	if (!strcmp(intputFile, "-")) {
 		/* Read from standard input */
 		zoneFile = stdin;
 	} else {
 		/* Attempt to read from file */
 		if (!(zoneFile = fopen(intputFile, "r"))) {
-			perror("Can't open log file");
+			perror("Can't open zone file");
 			return EXIT_FAILURE;
 		}
 	}
 
-	/* Get log file size */
+	/* Get zone file size */
 	if (fstat(fileno(zoneFile), &zoneFileStat)) {
-		perror("Can't stat log file");
+		perror("Can't stat zone file");
 		return EXIT_FAILURE;
 	}
 
