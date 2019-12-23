@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-12-22
+ * Last Updated: 2019-12-23
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -81,7 +81,7 @@ main(int argc, char *argv[]) {
 	int token_count;
 
 	if (pledge("stdio rpath", NULL) == -1) {
-		err(1, "pledge");
+		err(EXIT_FAILURE, "pledge");
 	}
 
 #ifdef HAVE_SECCOMP
