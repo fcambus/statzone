@@ -67,7 +67,8 @@ struct my_struct *uniqueNS = NULL;
 struct my_struct *ns;
 
 void
-displayUsage() {
+displayUsage()
+{
 	printf("USAGE: statzone [options] inputfile\n\n" \
 	    "Options are:\n\n" \
 	    "	-h Display usage\n" \
@@ -75,7 +76,8 @@ displayUsage() {
 }
 
 int
-main(int argc, char *argv[]) {
+main(int argc, char *argv[])
+{
 	char *token = NULL;
 	char *token_lc = NULL;
 	int token_count;
