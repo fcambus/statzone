@@ -1,7 +1,2 @@
-- Add flags to enable/disable options
-- Calculate average domain name length
-- Distribution of lengths for all domains in a zone
-- Character frequency analysis, for non IDN domains only?
-- First character distribution
 - Output JSON data?
 - Add a manual page for StatZone
