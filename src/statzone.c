@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-12-23
+ * Last Updated: 2020-02-14
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -248,14 +248,14 @@ main(int argc, char *argv[])
 
 	/* Printing CVS values */
 	fprintf(stdout, "---[ CSV values ]--------------------------------------------------------------\n");
-	fprintf(stdout, "IPv4 Glue ; IPv6 Glue ; NS ; Unique NS ; DS ; Signed ; IDNs ; Domains\n");
-	fprintf(stdout, "%" PRIu64 " ; ", results.a);
-	fprintf(stdout, "%" PRIu64 " ; ", results.aaaa);
-	fprintf(stdout, "%" PRIu64 " ; ", results.ns);
-	fprintf(stdout, "%u ; ", HASH_COUNT(uniqueNS));
-	fprintf(stdout, "%" PRIu64 " ; ", results.ds);
-	fprintf(stdout, "%u ; ", HASH_COUNT(signedDomains));
-	fprintf(stdout, "%" PRIu64 " ; ", results.idn);
+	fprintf(stdout, "IPv4 Glue , IPv6 Glue , NS , Unique NS , DS , Signed , IDNs , Domains\n");
+	fprintf(stdout, "%" PRIu64 " , ", results.a);
+	fprintf(stdout, "%" PRIu64 " , ", results.aaaa);
+	fprintf(stdout, "%" PRIu64 " , ", results.ns);
+	fprintf(stdout, "%u , ", HASH_COUNT(uniqueNS));
+	fprintf(stdout, "%" PRIu64 " , ", results.ds);
+	fprintf(stdout, "%u , ", HASH_COUNT(signedDomains));
+	fprintf(stdout, "%" PRIu64 " , ", results.idn);
 	fprintf(stdout, "%" PRIu64 "\n", results.domains);
 
 	/* Printing results */
