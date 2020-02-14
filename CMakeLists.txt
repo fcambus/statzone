@@ -1,6 +1,6 @@
 #
 # StatZone
-# Copyright (c) 2012-2019, Frederic Cambus
+# Copyright (c) 2012-2020, Frederic Cambus
 # https://www.statdns.com
 #
 # Created: 2012-02-13
