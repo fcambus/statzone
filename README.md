@@ -4,6 +4,10 @@
 
 StatZone is a DNS zone file analyzer targeted at TLD zones.
 
+After analyzing a zone, it returns counts for: IPv4 and IPv6 glue records,
+NS records (total and uniques), DS records, DNSSEC signed domains, IDNs
+domains, and total number of domains.
+
 It is currently used to generate TLD Zone File Statistics on [StatDNS][3].
 
 StatZone is written with security in mind and is running sandboxed on OpenBSD
