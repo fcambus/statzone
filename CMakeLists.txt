@@ -58,3 +58,4 @@ install(FILES statzone.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1/)
 
 enable_testing()
 add_test(statzone statzone)
+add_test(processing statzone ${PROJECT_SOURCE_DIR}/tests/arpa.zone)
