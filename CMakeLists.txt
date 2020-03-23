@@ -4,7 +4,7 @@
 # https://www.statdns.com
 #
 # Created: 2012-02-13
-# Last Updated: 2019-11-17
+# Last Updated: 2020-03-23
 #
 # StatZone is released under the BSD 2-Clause license
 # See LICENSE file for details.
@@ -54,6 +54,7 @@ add_definitions(-Wall -Wextra -std=c99 -pedantic)
 add_executable(statzone ${SRC})
 
 install(TARGETS statzone DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(FILES statzone.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1/)
 
 enable_testing()
 add_test(statzone statzone)
