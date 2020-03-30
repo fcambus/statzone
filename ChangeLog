@@ -1,3 +1,13 @@
+StatZone 1.0.1 (2020-03-30)
+
+- Add install target for man page
+- Add a test case, using the arpa.zone
+- Improve program description in README and in the man page
+- Lint the manual page, add missing paragraph break macros
+- Mention that seccomp is currently only optional
+
+
+
 StatZone 1.0.0 (2020-03-22)
 
 - Initial release
