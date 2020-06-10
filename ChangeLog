@@ -1,3 +1,19 @@
+StatZone 1.0.2 (2020-06-10)
+
+- Use CLOCK_REALTIME if CLOCK_MONOTONIC is not available
+- Remove unneeded <sys/select.h> include
+- Define _GNU_SOURCE in CMakeLists.txt to avoid cluttering source files
+- Allow the openat and write syscalls, they are used on glibc systems
+- No need to set HAVE_SECCOMP to 1, defining it is enough
+- Introduce the displaySummary() function, and use it to print summary
+- Move elapsed time calculation in the displaySummary() function
+- Add a signal handler for SIGINFO, to display progression on
+  supported platforms
+- Do not use intermediate variable to calculate elapsed time
+- Remove now useless runtime member from the results structure
+
+
+
 StatZone 1.0.1 (2020-03-30)
 
 - Add install target for man page
