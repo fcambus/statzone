@@ -75,6 +75,13 @@ displayUsage()
 void
 displaySummary()
 {
+	/* Stopping timer */
+	clock_gettime(CLOCK_MONOTONIC, &end);
+
+	timespecsub(&end, &begin, &elapsed);
+	results.runtime = elapsed.tv_sec + elapsed.tv_nsec / 1E9;
+
+	/* Print summary */
 	fprintf(stderr, "Processed %" PRIu64 " lines in %f seconds.\n",
 	    results.processedLines, results.runtime);
 }
@@ -243,12 +250,6 @@ main(int argc, char *argv[])
 	/* Don't count origin */
 	if (results.domains)
 		results.domains--;
-
-	/* Stopping timer */
-	clock_gettime(CLOCK_MONOTONIC, &end);
-
-	timespecsub(&end, &begin, &elapsed);
-	results.runtime = elapsed.tv_sec + elapsed.tv_nsec / 1E9;
 
 	/* Printing CVS values */
 	fprintf(stdout, "---[ CSV values ]--------------------------------------------------------------\n");
