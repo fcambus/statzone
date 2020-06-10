@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2020-06-09
+ * Last Updated: 2020-06-10
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -70,6 +70,13 @@ displayUsage()
 	    "Options are:\n\n" \
 	    "	-h Display usage\n" \
 	    "	-v Display version\n");
+}
+
+void
+displaySummary()
+{
+	fprintf(stderr, "Processed %" PRIu64 " lines in %f seconds.\n",
+	    results.processedLines, results.runtime);
 }
 
 int
@@ -256,7 +263,7 @@ main(int argc, char *argv[])
 	fprintf(stdout, "%" PRIu64 "\n", results.domains);
 
 	/* Printing results */
-	fprintf(stderr, "Processed %" PRIu64 " lines in %f seconds.\n", results.processedLines, results.runtime);
+	displaySummary();
 
 	/* Clean up */
 	fclose(zoneFile);
