@@ -13,6 +13,7 @@
 #include <err.h>
 #include <getopt.h>
 #include <inttypes.h>
+#include <signal.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -107,6 +108,10 @@ main(int argc, char *argv[])
 		perror("Can't load seccomp filter");
 		return EXIT_FAILURE;
 	}
+#endif
+
+#ifdef SIGINFO
+	signal(SIGINFO, displaySummary);
 #endif
 
 	while ((getoptFlag = getopt(argc, argv, "hv")) != -1) {
