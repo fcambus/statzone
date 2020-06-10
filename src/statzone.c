@@ -78,13 +78,12 @@ displaySummary()
 {
 	/* Stopping timer */
 	clock_gettime(CLOCK_MONOTONIC, &end);
-
 	timespecsub(&end, &begin, &elapsed);
-	results.runtime = elapsed.tv_sec + elapsed.tv_nsec / 1E9;
 
 	/* Print summary */
 	fprintf(stderr, "Processed %" PRIu64 " lines in %f seconds.\n",
-	    results.processedLines, results.runtime);
+	    results.processedLines,
+	    elapsed.tv_sec + elapsed.tv_nsec / 1E9);
 }
 
 int
