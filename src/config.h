@@ -25,7 +25,6 @@ struct results {
 	uint64_t ns;
 	uint64_t domains;
 	uint64_t idn;
-	double runtime;
 };
 
 #endif /* CONFIG_H */
