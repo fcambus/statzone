@@ -1,10 +1,10 @@
 /*
- * StatZone 1.0.1
+ * StatZone 1.0.2
  * Copyright (c) 2012-2020, Frederic Cambus
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-01-03
+ * Last Updated: 2019-06-10
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -13,7 +13,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define VERSION "StatZone 1.0.1"
+#define VERSION "StatZone 1.0.2"
 
 #define LINE_LENGTH_MAX 65536
 
