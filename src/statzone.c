@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2020-06-10
+ * Last Updated: 2020-06-12
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -24,9 +24,6 @@
 
 #ifdef HAVE_SECCOMP
 #include <sys/prctl.h>
-#include <sys/syscall.h>
-#include <linux/audit.h>
-#include <linux/filter.h>
 #include <linux/seccomp.h>
 #include "seccomp.h"
 #endif
