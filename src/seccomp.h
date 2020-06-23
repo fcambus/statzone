@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2020-06-09
+ * Last Updated: 2020-06-23
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -21,11 +21,25 @@
 #include <linux/filter.h>
 #include <linux/seccomp.h>
 
+#if defined(__x86_64__)
+#define SECCOMP_AUDIT_ARCH AUDIT_ARCH_X86_64
+#elif defined(__aarch64__)
+#define SECCOMP_AUDIT_ARCH AUDIT_ARCH_AARCH64
+#else
+#error "Seccomp is only supported on amd64 and aarch64 architectures."
+#endif
+
 #define STATZONE_SYSCALL_ALLOW(syscall) \
 	BPF_JUMP(BPF_JMP+BPF_JEQ+BPF_K, __NR_##syscall, 0, 1), \
 	BPF_STMT(BPF_RET+BPF_K, SECCOMP_RET_ALLOW)
 
 static struct sock_filter filter[] = {
+	/* Validate architecture */
+	BPF_STMT(BPF_LD+BPF_W+BPF_ABS, offsetof(struct seccomp_data, arch)),
+	BPF_JUMP(BPF_JMP+BPF_JEQ+BPF_K, SECCOMP_AUDIT_ARCH, 1, 0),
+	BPF_STMT(BPF_RET+BPF_K, SECCOMP_RET_KILL),
+
+	/* Load syscall */
 	BPF_STMT(BPF_LD+BPF_W+BPF_ABS, offsetof(struct seccomp_data, nr)),
 
 	STATZONE_SYSCALL_ALLOW(brk),
