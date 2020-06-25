@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2020-06-24
+ * Last Updated: 2020-06-25
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -49,11 +49,11 @@ static struct sock_filter filter[] = {
 	STATZONE_SYSCALL_ALLOW(close),
 	STATZONE_SYSCALL_ALLOW(exit_group),
 	STATZONE_SYSCALL_ALLOW(fstat),
-#if defined(SYS_fstat64)
+#if defined(__NR_fstat64)
 	STATZONE_SYSCALL_ALLOW(fstat64),	/* i386 glibc */
 #endif
 	STATZONE_SYSCALL_ALLOW(ioctl),
-#if defined(SYS_open)
+#if defined(__NR_open)
 	STATZONE_SYSCALL_ALLOW(open),
 #endif
 	STATZONE_SYSCALL_ALLOW(openat),
