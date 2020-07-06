@@ -1,3 +1,12 @@
+StatZone 1.0.3 (2020-07-06)
+
+- Remove some unneeded seccomp related includes
+- Validate architectures for seccomp
+- Add seccomp support on i386, tested on glibc and musl
+- Use __NR_ instead of SYS_ prefix in #if defined checks
+
+
+
 StatZone 1.0.2 (2020-06-10)
 
 - Use CLOCK_REALTIME if CLOCK_MONOTONIC is not available
