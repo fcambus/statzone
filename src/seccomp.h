@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2020-06-25
+ * Last Updated: 2020-09-17
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -25,6 +25,8 @@
 #define SECCOMP_AUDIT_ARCH AUDIT_ARCH_I386
 #elif defined(__x86_64__)
 #define SECCOMP_AUDIT_ARCH AUDIT_ARCH_X86_64
+#elif defined(__arm__)
+#define SECCOMP_AUDIT_ARCH AUDIT_ARCH_ARM
 #elif defined(__aarch64__)
 #define SECCOMP_AUDIT_ARCH AUDIT_ARCH_AARCH64
 #else
