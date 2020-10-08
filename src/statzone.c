@@ -61,7 +61,7 @@ struct my_struct *ds;
 struct my_struct *uniqueNS = NULL;
 struct my_struct *ns;
 
-void
+static void
 displayUsage()
 {
 	printf("USAGE: statzone [options] inputfile\n\n" \
@@ -70,7 +70,7 @@ displayUsage()
 	    "	-v Display version\n");
 }
 
-void
+static void
 displaySummary()
 {
 	/* Stopping timer */
