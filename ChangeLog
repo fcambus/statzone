@@ -1,3 +1,14 @@
+StatZone 1.0.4 (2020-10-19)
+
+- Add support for seccomp on arm
+- Update error message to use seccomp architecture names
+- Improve experimental seccomp support mention in the README
+- Make displayUsage() and displaySummary() static
+- Set CMAKE_BUILD_TYPE to "Release" in CMakeLists.txt
+- Enable FORTIFY_SOURCE level 2
+
+
+
 StatZone 1.0.3 (2020-07-06)
 
 - Remove some unneeded seccomp related includes
