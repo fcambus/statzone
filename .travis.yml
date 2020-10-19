@@ -33,7 +33,7 @@ addons:
   coverity_scan:
     project:
       name: "fcambus/statzone"
-      version: 1.0.3
+      version: 1.0.4
       description: "DNS zone file analyzer targeted at TLD zones"
     notification_email: fred@statdns.com
     build_command_prepend: cmake .
