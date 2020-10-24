@@ -4,7 +4,7 @@
 # https://www.statdns.com
 #
 # Created: 2012-02-13
-# Last Updated: 2020-10-10
+# Last Updated: 2020-10-24
 #
 # StatZone is released under the BSD 2-Clause license
 # See LICENSE file for details.
@@ -44,7 +44,6 @@ include_directories("compat")
 find_path(UTHASH_INCLUDE_DIRS uthash.h)
 include_directories(${UTHASH_INCLUDE_DIRS})
 
-set(CMAKE_BUILD_TYPE Release)
 set(SRC src/statzone.c src/strtolower.c)
 
 if(NOT HAVE_PLEDGE)
