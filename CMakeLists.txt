@@ -50,7 +50,8 @@ if(NOT HAVE_PLEDGE)
   set (SRC ${SRC} compat/pledge.c)
 endif()
 
-add_definitions(-D_GNU_SOURCE -D_FORTIFY_SOURCE=2 -Wall -Wextra -std=c99 -pedantic)
+set(CMAKE_C_FLAGS_RELEASE "-D_FORTIFY_SOURCE=2")
+add_definitions(-D_GNU_SOURCE -Wall -Wextra -std=c99 -pedantic)
 add_executable(statzone ${SRC})
 
 install(TARGETS statzone DESTINATION ${CMAKE_INSTALL_BINDIR})
