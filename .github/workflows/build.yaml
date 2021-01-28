@@ -1,0 +1,23 @@
+name: "Build and run tests"
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -qy uthash-dev
+    - name: Build & Test
+      uses: ashutoshvarma/action-cmake-build@master
+      with:
+        build-dir: ${{ runner.workspace }}/build
+        cc: gcc
+        build-type: Release
+        run-test: true
+        install-build: true
+        parallel: 2
