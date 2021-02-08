@@ -79,7 +79,7 @@ main(int argc, char *argv[])
 	int opt, token_count;
 
 	char lineBuffer[LINE_LENGTH_MAX];
-	char *intput, *domain, *previous_domain; 
+	char *intput, *domain, *previous_domain = NULL;
 	char *rdata, *token = NULL, *token_lc = NULL;
 
 	if (pledge("stdio rpath", NULL) == -1) {
@@ -143,8 +143,6 @@ main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 
-	previous_domain = strdup("");
-
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, zonefile)) {
 		if (!*lineBuffer)
 			continue;
@@ -204,7 +202,8 @@ main(int argc, char *argv[])
 			if (!strcmp(token_lc, "ns")) {
 				results.ns++;
 
-				if (strlen(previous_domain) != strlen(domain) ||
+				if (previous_domain == NULL ||
+				    strlen(previous_domain) != strlen(domain) ||
 				    strncmp(domain, previous_domain, strlen(domain))) {
 					results.domains++;
 					free(previous_domain);
