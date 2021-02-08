@@ -64,15 +64,15 @@ main(int argc, char *argv[])
 {
 	char lineBuffer[LINE_LENGTH_MAX];
 
-	FILE *zoneFile;
-	struct stat zoneFileStat;
+	FILE *zonefile;
+	struct stat zonefile_stat;
 
-	int8_t getoptFlag;
+	int8_t opt;
 
-	char *intputFile;
+	char *intput;
 
 	char *domain;
-	char *previousDomain;
+	char *previous_domain;
 	char *rdata;
 
 	struct my_struct {
@@ -80,9 +80,9 @@ main(int argc, char *argv[])
 		UT_hash_handle hh;
 	};
 
-	struct my_struct *signedDomains = NULL;
+	struct my_struct *signed_domains = NULL;
 	struct my_struct *ds;
-	struct my_struct *uniqueNS = NULL;
+	struct my_struct *unique_ns = NULL;
 	struct my_struct *ns;
 
 	char *token = NULL;
@@ -109,8 +109,8 @@ main(int argc, char *argv[])
 	signal(SIGINFO, summary);
 #endif
 
-	while ((getoptFlag = getopt(argc, argv, "hv")) != -1) {
-		switch (getoptFlag) {
+	while ((opt = getopt(argc, argv, "hv")) != -1) {
+		switch (opt) {
 
 		case 'h':
 			usage();
@@ -123,7 +123,7 @@ main(int argc, char *argv[])
 	}
 
 	if (optind < argc) {
-		intputFile = argv[optind];
+		intput = argv[optind];
 	} else {
 		usage();
 		return EXIT_SUCCESS;
@@ -133,26 +133,26 @@ main(int argc, char *argv[])
 	clock_gettime(CLOCK_MONOTONIC, &begin);
 
 	/* Open zone file */
-	if (!strcmp(intputFile, "-")) {
+	if (!strcmp(intput, "-")) {
 		/* Read from standard input */
-		zoneFile = stdin;
+		zonefile = stdin;
 	} else {
 		/* Attempt to read from file */
-		if (!(zoneFile = fopen(intputFile, "r"))) {
+		if (!(zonefile = fopen(intput, "r"))) {
 			perror("Can't open zone file");
 			return EXIT_FAILURE;
 		}
 	}
 
 	/* Get zone file size */
-	if (fstat(fileno(zoneFile), &zoneFileStat)) {
+	if (fstat(fileno(zonefile), &zonefile_stat)) {
 		perror("Can't stat zone file");
 		return EXIT_FAILURE;
 	}
 
-	previousDomain = strdup("");
+	previous_domain = strdup("");
 
-	while (fgets(lineBuffer, LINE_LENGTH_MAX, zoneFile)) {
+	while (fgets(lineBuffer, LINE_LENGTH_MAX, zonefile)) {
 		if (!*lineBuffer)
 			continue;
 
@@ -199,23 +199,23 @@ main(int argc, char *argv[])
 			if (token_count && !strcmp(token_lc, "ds")) {
 				results.ds++;
 
-				HASH_FIND_STR(signedDomains, domain, ds);
+				HASH_FIND_STR(signed_domains, domain, ds);
 
 				if (!ds) {
 					ds = malloc(sizeof (struct my_struct));
 					ds->domain = strdup(domain);
-					HASH_ADD_STR(signedDomains, domain, ds);
+					HASH_ADD_STR(signed_domains, domain, ds);
 				}
 			}
 
 			if (!strcmp(token_lc, "ns")) {
 				results.ns++;
 
-				if (strlen(previousDomain) != strlen(domain) ||
-				    strncmp(domain, previousDomain, strlen(domain))) {
+				if (strlen(previous_domain) != strlen(domain) ||
+				    strncmp(domain, previous_domain, strlen(domain))) {
 					results.domains++;
-					free(previousDomain);
-					previousDomain = strdup(domain);
+					free(previous_domain);
+					previous_domain = strdup(domain);
 					if (!strncmp(domain, "xn--", 4))
 						results.idn++;
 				}
@@ -226,12 +226,12 @@ main(int argc, char *argv[])
 					rdata = strtok(NULL, "\n");
 
 				if (rdata) {
-					HASH_FIND_STR(uniqueNS, rdata, ns);
+					HASH_FIND_STR(unique_ns, rdata, ns);
 
 					if (!ns) {
 						ns = malloc(sizeof (struct my_struct));
 						ns->domain = strdup(rdata);
-						HASH_ADD_STR(uniqueNS, domain, ns);
+						HASH_ADD_STR(unique_ns, domain, ns);
 					}
 				}
 			}
@@ -253,9 +253,9 @@ main(int argc, char *argv[])
 	fprintf(stdout, "%" PRIu64 ",", results.a);
 	fprintf(stdout, "%" PRIu64 ",", results.aaaa);
 	fprintf(stdout, "%" PRIu64 ",", results.ns);
-	fprintf(stdout, "%u,", HASH_COUNT(uniqueNS));
+	fprintf(stdout, "%u,", HASH_COUNT(unique_ns));
 	fprintf(stdout, "%" PRIu64 ",", results.ds);
-	fprintf(stdout, "%u,", HASH_COUNT(signedDomains));
+	fprintf(stdout, "%u,", HASH_COUNT(signed_domains));
 	fprintf(stdout, "%" PRIu64 ",", results.idn);
 	fprintf(stdout, "%" PRIu64 "\n", results.domains);
 
@@ -263,7 +263,7 @@ main(int argc, char *argv[])
 	summary();
 
 	/* Clean up */
-	fclose(zoneFile);
+	fclose(zonefile);
 
 	return EXIT_SUCCESS;
 }
