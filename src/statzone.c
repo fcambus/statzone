@@ -200,6 +200,9 @@ main(int argc, char *argv[])
 
 				if (!ds) {
 					ds = malloc(sizeof (struct my_struct));
+					if (ds == NULL)
+						error("Memory allocation error.");
+
 					ds->domain = strdup(domain);
 					HASH_ADD_STR(signed_domains, domain, ds);
 				}
@@ -228,6 +231,9 @@ main(int argc, char *argv[])
 
 					if (!ns) {
 						ns = malloc(sizeof (struct my_struct));
+						if (ns == NULL)
+							error("Memory allocation error.");
+
 						ns->domain = strdup(rdata);
 						HASH_ADD_STR(unique_ns, domain, ns);
 					}
