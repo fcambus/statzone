@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2020-06-12
+ * Last Updated: 2021-02-08
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -62,7 +62,7 @@ struct my_struct *uniqueNS = NULL;
 struct my_struct *ns;
 
 static void
-displayUsage()
+usage()
 {
 	printf("USAGE: statzone [options] inputfile\n\n" \
 	    "Options are:\n\n" \
@@ -71,7 +71,7 @@ displayUsage()
 }
 
 static void
-displaySummary()
+summary()
 {
 	/* Stopping timer */
 	clock_gettime(CLOCK_MONOTONIC, &end);
@@ -107,14 +107,14 @@ main(int argc, char *argv[])
 #endif
 
 #ifdef SIGINFO
-	signal(SIGINFO, displaySummary);
+	signal(SIGINFO, summary);
 #endif
 
 	while ((getoptFlag = getopt(argc, argv, "hv")) != -1) {
 		switch (getoptFlag) {
 
 		case 'h':
-			displayUsage();
+			usage();
 			return EXIT_SUCCESS;
 
 		case 'v':
@@ -126,7 +126,7 @@ main(int argc, char *argv[])
 	if (optind < argc) {
 		intputFile = argv[optind];
 	} else {
-		displayUsage();
+		usage();
 		return EXIT_SUCCESS;
 	}
 
@@ -265,7 +265,7 @@ main(int argc, char *argv[])
 	fprintf(stdout, "%" PRIu64 "\n", results.domains);
 
 	/* Printing results */
-	displaySummary();
+	summary();
 
 	/* Clean up */
 	fclose(zoneFile);
