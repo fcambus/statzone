@@ -204,6 +204,9 @@ main(int argc, char *argv[])
 						error("Memory allocation error.");
 
 					ds->domain = strdup(domain);
+					if (ds->domain == NULL)
+						error("Memory allocation error.");
+
 					HASH_ADD_STR(signed_domains, domain, ds);
 				}
 			}
@@ -217,6 +220,9 @@ main(int argc, char *argv[])
 					results.domains++;
 					free(previous_domain);
 					previous_domain = strdup(domain);
+					if (previous_domain == NULL)
+						error("Memory allocation error.");
+
 					if (!strncmp(domain, "xn--", 4))
 						results.idn++;
 				}
@@ -235,6 +241,9 @@ main(int argc, char *argv[])
 							error("Memory allocation error.");
 
 						ns->domain = strdup(rdata);
+						if (ns->domain == NULL)
+							error("Memory allocation error.");
+
 						HASH_ADD_STR(unique_ns, domain, ns);
 					}
 				}
