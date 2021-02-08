@@ -22,24 +22,24 @@ StatZone uses the CMake build system and requires uthash header files.
 
 ## Building
 
-        mkdir build
-        cd build
-        cmake ..
-        make
+	mkdir build
+	cd build
+	cmake ..
+	make
 
 StatZone has been successfully built and tested on OpenBSD and Linux with
 both Clang and GCC.
 
 ## Usage
 
-        statzone [-hv] zonefile
+	statzone [-hv] zonefile
 
 If file is a single dash (`-'), statzone reads from the standard input.
 
 The options are as follows:
 
-        	-h	Display usage
-        	-v	Display version
+	-h	Display usage
+	-v	Display version
 
 StatZone outputs results to **stdout**.
 
