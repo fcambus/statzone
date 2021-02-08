@@ -35,31 +35,7 @@
 #include "strtolower.h"
 
 struct timespec begin, end, elapsed;
-
-char lineBuffer[LINE_LENGTH_MAX];
-
 struct results results;
-
-FILE *zoneFile;
-struct stat zoneFileStat;
-
-int8_t getoptFlag;
-
-char *intputFile;
-
-char *domain;
-char *previousDomain;
-char *rdata;
-
-struct my_struct {
-	char *domain;
-	UT_hash_handle hh;
-};
-
-struct my_struct *signedDomains = NULL;
-struct my_struct *ds;
-struct my_struct *uniqueNS = NULL;
-struct my_struct *ns;
 
 static void
 usage()
@@ -86,6 +62,29 @@ summary()
 int
 main(int argc, char *argv[])
 {
+	char lineBuffer[LINE_LENGTH_MAX];
+
+	FILE *zoneFile;
+	struct stat zoneFileStat;
+
+	int8_t getoptFlag;
+
+	char *intputFile;
+
+	char *domain;
+	char *previousDomain;
+	char *rdata;
+
+	struct my_struct {
+		char *domain;
+		UT_hash_handle hh;
+	};
+
+	struct my_struct *signedDomains = NULL;
+	struct my_struct *ds;
+	struct my_struct *uniqueNS = NULL;
+	struct my_struct *ns;
+
 	char *token = NULL;
 	char *token_lc = NULL;
 	int token_count;
