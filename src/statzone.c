@@ -216,8 +216,10 @@ main(int argc, char *argv[])
 				    strlen(previous_domain) != strlen(domain) ||
 				    strncmp(domain, previous_domain, strlen(domain))) {
 					results.domains++;
+
 					free(previous_domain);
 					previous_domain = strdup(domain);
+
 					if (previous_domain == NULL)
 						error("Memory allocation error.");
 
