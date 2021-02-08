@@ -197,7 +197,7 @@ main(int argc, char *argv[])
 				HASH_FIND_STR(signed_domains, domain, ds);
 
 				if (!ds) {
-					ds = malloc(sizeof (struct domain));
+					ds = malloc(sizeof(struct domain));
 					if (ds == NULL)
 						error("Memory allocation error.");
 
@@ -234,7 +234,7 @@ main(int argc, char *argv[])
 					HASH_FIND_STR(unique_ns, rdata, ns);
 
 					if (!ns) {
-						ns = malloc(sizeof (struct domain));
+						ns = malloc(sizeof(struct domain));
 						if (ns == NULL)
 							error("Memory allocation error.");
 
