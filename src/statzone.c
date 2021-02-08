@@ -64,10 +64,10 @@ struct my_struct *ns;
 static void
 usage()
 {
-	printf("USAGE: statzone [options] inputfile\n\n" \
-	    "Options are:\n\n" \
-	    "	-h Display usage\n" \
-	    "	-v Display version\n");
+	printf("USAGE: statzone [-hv] zonefile\n\n" \
+	    "The options are as follows:\n\n" \
+	    "	-h	Display usage\n" \
+	    "	-v	Display version\n");
 }
 
 static void

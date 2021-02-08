@@ -32,14 +32,14 @@ both Clang and GCC.
 
 ## Usage
 
-        statzone [-hv] file
+        statzone [-hv] zonefile
 
 If file is a single dash (`-'), statzone reads from the standard input.
 
-Options are:
+The options are as follows:
 
-        -h Display usage
-        -v Display version
+        	-h	Display usage
+        	-v	Display version
 
 StatZone outputs results to **stdout**.
 
