@@ -38,6 +38,12 @@ struct timespec begin, end, elapsed;
 struct results results;
 
 static void
+error(const char *str)
+{
+	errx(EXIT_FAILURE, "%s", str);
+}
+
+static void
 usage()
 {
 	printf("USAGE: statzone [-hv] zonefile\n\n" \
