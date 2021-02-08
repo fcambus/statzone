@@ -274,6 +274,7 @@ main(int argc, char *argv[])
 	summary();
 
 	/* Clean up */
+	free(previous_domain);
 	fclose(zonefile);
 
 	return EXIT_SUCCESS;
