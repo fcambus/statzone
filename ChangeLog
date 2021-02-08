@@ -1,3 +1,19 @@
+StatZone 1.0.5 (2021-02-08)
+
+- Stop forcing FORTIFY_SOURCE level 2, it should be package builders decision
+- Remove hardcoded program name in the manual page
+- Rename displayUsage() and displaySummary() to usage() and summary()
+- Get rid of most global variables, move all declarations to main()
+- Remove dead increments for argc and argv
+- Refactor things to check earlier on if *lineBuffer is not NUL
+- Refactor the domain comparison checks, allows removing strdup("") call
+- Add an error() function to wrap errx() calls
+- Check malloc() and strdup() return value and error out on failed allocations
+- Group and initialize uthash struct declarations
+- Free previous_domain to appease Clang's static analyzer
+
+
+
 StatZone 1.0.4 (2020-10-19)
 
 - Add support for seccomp on arm
