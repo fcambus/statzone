@@ -68,8 +68,6 @@ summary()
 int
 main(int argc, char *argv[])
 {
-	FILE *zonefile;
-
 	struct stat zonefile_stat;
 
 	struct domain {
@@ -85,6 +83,8 @@ main(int argc, char *argv[])
 	char lineBuffer[LINE_LENGTH_MAX];
 	char *input, *domain, *previous_domain = NULL;
 	char *rdata, *token = NULL, *token_lc = NULL;
+
+	FILE *zonefile;
 
 	if (pledge("stdio rpath", NULL) == -1) {
 		err(EXIT_FAILURE, "pledge");
