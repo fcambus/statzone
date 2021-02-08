@@ -75,4 +75,4 @@ GitHub: https://github.com/fcambus/statzone
 [1]: https://api.travis-ci.org/fcambus/statzone.png?branch=master
 [2]: https://travis-ci.org/fcambus/statzone
 [3]: https://www.statdns.com
-[4]: ftp://ftp.internic.net/domain/
+[4]: https://www.internic.net/domain/
