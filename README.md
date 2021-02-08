@@ -43,7 +43,7 @@ The options are as follows:
 
 StatZone outputs results to **stdout**.
 
-TLD zone files for .arpa can be found on Internic FTP site[4], .se and
+TLD zone files for .arpa can be found on [Internic FTP site][4], .se and
 .nu zones are available through AXFR at zonedata.iis.se.
 
 ## Features
