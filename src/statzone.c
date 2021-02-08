@@ -83,7 +83,7 @@ main(int argc, char *argv[])
 	int opt, token_count;
 
 	char lineBuffer[LINE_LENGTH_MAX];
-	char *intput, *domain, *previous_domain = NULL;
+	char *input, *domain, *previous_domain = NULL;
 	char *rdata, *token = NULL, *token_lc = NULL;
 
 	if (pledge("stdio rpath", NULL) == -1) {
@@ -120,7 +120,7 @@ main(int argc, char *argv[])
 	}
 
 	if (optind < argc) {
-		intput = argv[optind];
+		input = argv[optind];
 	} else {
 		usage();
 		return EXIT_SUCCESS;
@@ -130,12 +130,12 @@ main(int argc, char *argv[])
 	clock_gettime(CLOCK_MONOTONIC, &begin);
 
 	/* Open zone file */
-	if (!strcmp(intput, "-")) {
+	if (!strcmp(input, "-")) {
 		/* Read from standard input */
 		zonefile = stdin;
 	} else {
 		/* Attempt to read from file */
-		if (!(zonefile = fopen(intput, "r"))) {
+		if (!(zonefile = fopen(input, "r"))) {
 			perror("Can't open zone file");
 			return EXIT_FAILURE;
 		}
