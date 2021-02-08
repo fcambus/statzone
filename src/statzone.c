@@ -77,10 +77,8 @@ main(int argc, char *argv[])
 		UT_hash_handle hh;
 	};
 
-	struct my_struct *signed_domains = NULL;
-	struct my_struct *ds;
-	struct my_struct *unique_ns = NULL;
-	struct my_struct *ns;
+	struct my_struct *ds = NULL, *signed_domains = NULL;
+	struct my_struct *ns = NULL, *unique_ns = NULL;
 
 	int opt, token_count;
 
