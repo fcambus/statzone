@@ -72,13 +72,13 @@ main(int argc, char *argv[])
 
 	struct stat zonefile_stat;
 
-	struct my_struct {
+	struct domain {
 		char *domain;
 		UT_hash_handle hh;
 	};
 
-	struct my_struct *ds = NULL, *signed_domains = NULL;
-	struct my_struct *ns = NULL, *unique_ns = NULL;
+	struct domain *ds = NULL, *signed_domains = NULL;
+	struct domain *ns = NULL, *unique_ns = NULL;
 
 	int opt, token_count;
 
@@ -197,7 +197,7 @@ main(int argc, char *argv[])
 				HASH_FIND_STR(signed_domains, domain, ds);
 
 				if (!ds) {
-					ds = malloc(sizeof (struct my_struct));
+					ds = malloc(sizeof (struct domain));
 					if (ds == NULL)
 						error("Memory allocation error.");
 
@@ -234,7 +234,7 @@ main(int argc, char *argv[])
 					HASH_FIND_STR(unique_ns, rdata, ns);
 
 					if (!ns) {
-						ns = malloc(sizeof (struct my_struct));
+						ns = malloc(sizeof (struct domain));
 						if (ns == NULL)
 							error("Memory allocation error.");
 
