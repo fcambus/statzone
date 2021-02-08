@@ -62,18 +62,9 @@ summary()
 int
 main(int argc, char *argv[])
 {
-	char lineBuffer[LINE_LENGTH_MAX];
-
 	FILE *zonefile;
+
 	struct stat zonefile_stat;
-
-	int8_t opt;
-
-	char *intput;
-
-	char *domain;
-	char *previous_domain;
-	char *rdata;
 
 	struct my_struct {
 		char *domain;
@@ -85,9 +76,11 @@ main(int argc, char *argv[])
 	struct my_struct *unique_ns = NULL;
 	struct my_struct *ns;
 
-	char *token = NULL;
-	char *token_lc = NULL;
-	int token_count;
+	int opt, token_count;
+
+	char lineBuffer[LINE_LENGTH_MAX];
+	char *intput, *domain, *previous_domain; 
+	char *rdata, *token = NULL, *token_lc = NULL;
 
 	if (pledge("stdio rpath", NULL) == -1) {
 		err(EXIT_FAILURE, "pledge");
