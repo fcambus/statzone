@@ -153,92 +153,93 @@ main(int argc, char *argv[])
 	previousDomain = strdup("");
 
 	while (fgets(lineBuffer, LINE_LENGTH_MAX, zoneFile)) {
+		if (!*lineBuffer)
+			continue;
+
 		if (*lineBuffer == ';') /* Comments */
 			continue;
 
 		if (*lineBuffer == '$') /* Directives */
 			continue;
 
-		if (*lineBuffer) {
-			token_count = 0;
-			token = strtok(lineBuffer, " \t");
+		token_count = 0;
+		token = strtok(lineBuffer, " \t");
 
-			if (token)
-				domain = strtolower(token);
+		if (token)
+			domain = strtolower(token);
 
-			while (token) {
-				if (*token == ';') { /* Comments */
-					token = NULL;
-					continue;
+		while (token) {
+			if (*token == ';') { /* Comments */
+				token = NULL;
+				continue;
+			}
+
+			token_lc = strtolower(token);
+			if (token_count && !strcmp(token_lc, "nsec")) {
+				token = NULL;
+				continue;
+			}
+
+			if (token_count && !strcmp(token_lc, "nsec3")) {
+				token = NULL;
+				continue;
+			}
+
+			if (token_count && !strcmp(token_lc, "rrsig")) {
+				token = NULL;
+				continue;
+			}
+
+			if (token_count && !strcmp(token_lc, "a")) {
+				results.a++;
+			}
+
+			if (token_count && !strcmp(token_lc, "aaaa")) {
+				results.aaaa++;
+			}
+
+			if (token_count && !strcmp(token_lc, "ds")) {
+				results.ds++;
+
+				HASH_FIND_STR(signedDomains, domain, ds);
+
+				if (!ds) {
+					ds = malloc(sizeof (struct my_struct));
+					ds->domain = strdup(domain);
+					HASH_ADD_STR(signedDomains, domain, ds);
+				}
+			}
+
+			if (!strcmp(token_lc, "ns")) {
+				results.ns++;
+
+				if (strlen(previousDomain) != strlen(domain) ||
+				    strncmp(domain, previousDomain, strlen(domain))) {
+					results.domains++;
+					free(previousDomain);
+					previousDomain = strdup(domain);
+					if (!strncmp(domain, "xn--", 4))
+						results.idn++;
 				}
 
-				token_lc = strtolower(token);
-				if (token_count && !strcmp(token_lc, "nsec")) {
-					token = NULL;
-					continue;
-				}
+				rdata = strtok(NULL, "\n");
 
-				if (token_count && !strcmp(token_lc, "nsec3")) {
-					token = NULL;
-					continue;
-				}
-
-				if (token_count && !strcmp(token_lc, "rrsig")) {
-					token = NULL;
-					continue;
-				}
-
-				if (token_count && !strcmp(token_lc, "a")) {
-					results.a++;
-				}
-
-				if (token_count && !strcmp(token_lc, "aaaa")) {
-					results.aaaa++;
-				}
-
-				if (token_count && !strcmp(token_lc, "ds")) {
-					results.ds++;
-
-					HASH_FIND_STR(signedDomains, domain, ds);
-
-					if (!ds) {
-						ds = malloc(sizeof (struct my_struct));
-						ds->domain = strdup(domain);
-						HASH_ADD_STR(signedDomains, domain, ds);
-					}
-				}
-
-				if (!strcmp(token_lc, "ns")) {
-					results.ns++;
-
-					if (strlen(previousDomain) != strlen(domain) ||
-					    strncmp(domain, previousDomain, strlen(domain))) {
-						results.domains++;
-						free(previousDomain);
-						previousDomain = strdup(domain);
-						if (!strncmp(domain, "xn--", 4))
-							results.idn++;
-					}
-
+				if (rdata && strchr(rdata, ' '))
 					rdata = strtok(NULL, "\n");
 
-					if (rdata && strchr(rdata, ' '))
-						rdata = strtok(NULL, "\n");
+				if (rdata) {
+					HASH_FIND_STR(uniqueNS, rdata, ns);
 
-					if (rdata) {
-						HASH_FIND_STR(uniqueNS, rdata, ns);
-
-						if (!ns) {
-							ns = malloc(sizeof (struct my_struct));
-							ns->domain = strdup(rdata);
-							HASH_ADD_STR(uniqueNS, domain, ns);
-						}
+					if (!ns) {
+						ns = malloc(sizeof (struct my_struct));
+						ns->domain = strdup(rdata);
+						HASH_ADD_STR(uniqueNS, domain, ns);
 					}
 				}
-
-				token = strtok(NULL, " \t");
-				token_count++;
 			}
+
+			token = strtok(NULL, " \t");
+			token_count++;
 		}
 
 		results.processedLines++;
