@@ -34,7 +34,7 @@
 #include "config.h"
 #include "strtolower.h"
 
-struct timespec begin, end, elapsed;
+struct timespec begin, current, elapsed;
 struct results results;
 
 static void
@@ -56,8 +56,8 @@ static void
 summary()
 {
 	/* Stopping timer */
-	clock_gettime(CLOCK_MONOTONIC, &end);
-	timespecsub(&end, &begin, &elapsed);
+	clock_gettime(CLOCK_MONOTONIC, &current);
+	timespecsub(&current, &begin, &elapsed);
 
 	/* Print summary */
 	fprintf(stderr, "Processed %" PRIu64 " lines in %f seconds.\n",
