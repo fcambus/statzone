@@ -129,9 +129,6 @@ main(int argc, char *argv[])
 		return EXIT_SUCCESS;
 	}
 
-	argc -= optind;
-	argv += optind;
-
 	/* Starting timer */
 	clock_gettime(CLOCK_MONOTONIC, &begin);
 
