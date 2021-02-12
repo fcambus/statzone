@@ -46,7 +46,7 @@ error(const char *str)
 static void
 usage()
 {
-	printf("USAGE: statzone [-hv] zonefile\n\n" \
+	printf("statzone [-hv] zonefile\n\n" \
 	    "The options are as follows:\n\n" \
 	    "	-h	Display usage\n" \
 	    "	-v	Display version\n");
