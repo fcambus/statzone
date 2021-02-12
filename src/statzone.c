@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2021-02-08
+ * Last Updated: 2021-02-12
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -80,7 +80,7 @@ main(int argc, char *argv[])
 
 	int opt, token_count;
 
-	char lineBuffer[LINE_LENGTH_MAX];
+	char linebuffer[LINE_LENGTH_MAX];
 	char *input, *domain, *previous_domain = NULL;
 	char *rdata, *token = NULL, *token_lc = NULL;
 
@@ -147,18 +147,18 @@ main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 
-	while (fgets(lineBuffer, LINE_LENGTH_MAX, zonefile)) {
-		if (!*lineBuffer)
+	while (fgets(linebuffer, LINE_LENGTH_MAX, zonefile)) {
+		if (!*linebuffer)
 			continue;
 
-		if (*lineBuffer == ';') /* Comments */
+		if (*linebuffer == ';') /* Comments */
 			continue;
 
-		if (*lineBuffer == '$') /* Directives */
+		if (*linebuffer == '$') /* Directives */
 			continue;
 
 		token_count = 0;
-		token = strtok(lineBuffer, " \t");
+		token = strtok(linebuffer, " \t");
 
 		if (token)
 			domain = strtolower(token);
