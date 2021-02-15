@@ -38,8 +38,8 @@ If file is a single dash (`-'), statzone reads from the standard input.
 
 The options are as follows:
 
-	-h	Display usage
-	-v	Display version
+	-h	Display usage.
+	-v	Display version.
 
 StatZone outputs results to **stdout**.
 
