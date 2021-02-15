@@ -1,14 +1,12 @@
 # StatZone
 
-[![Build Status][1]][2]
-
 StatZone is a DNS zone file analyzer targeted at TLD zones.
 
 After analyzing a zone, it returns counts for: IPv4 and IPv6 glue records,
 NS records (total and uniques), DS records, DNSSEC signed domains, IDNs
 domains, and total number of domains.
 
-It is currently used to generate TLD Zone File Statistics on [StatDNS][3].
+It is currently used to generate TLD Zone File Statistics on [StatDNS][1].
 
 StatZone is written with security in mind and is running sandboxed on OpenBSD
 (using pledge). Experimental seccomp support is available for selected
@@ -43,7 +41,7 @@ The options are as follows:
 
 StatZone outputs results to **stdout**.
 
-TLD zone files for .arpa can be found on [Internic FTP site][4], .se and
+TLD zone files for .arpa can be found on [Internic FTP site][2], .se and
 .nu zones are available through AXFR at zonedata.iis.se.
 
 ## Features
@@ -72,7 +70,5 @@ StatZone is developed by Frederic Cambus.
 
 GitHub: https://github.com/fcambus/statzone
 
-[1]: https://api.travis-ci.org/fcambus/statzone.png?branch=master
-[2]: https://travis-ci.org/fcambus/statzone
-[3]: https://www.statdns.com
-[4]: https://www.internic.net/domain/
+[1]: https://www.statdns.com
+[2]: https://www.internic.net/domain/
