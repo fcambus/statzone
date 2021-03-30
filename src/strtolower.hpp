@@ -4,15 +4,15 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-01-03
+ * Last Updated: 2021-03-30
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
  */
 
-#ifndef STRTOLOWER_H
-#define STRTOLOWER_H
+#ifndef STRTOLOWER_HPP
+#define STRTOLOWER_HPP
 
 char *strtolower(char *);
 
-#endif /* STRTOLOWER_H */
+#endif /* STRTOLOWER_HPP */

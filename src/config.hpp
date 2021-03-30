@@ -4,14 +4,14 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2019-06-10
+ * Last Updated: 2021-03-30
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
  */
 
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef CONFIG_HPP
+#define CONFIG_HPP
 
 #define VERSION "StatZone 1.0.5"
 
@@ -27,4 +27,4 @@ struct results {
 	uint64_t idn;
 };
 
-#endif /* CONFIG_H */
+#endif /* CONFIG_HPP */

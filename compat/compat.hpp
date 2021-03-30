@@ -1,8 +1,8 @@
-#ifndef COMPAT_H
-#define COMPAT_H
+#ifndef COMPAT_HPP
+#define COMPAT_HPP
 
 #ifndef HAVE_PLEDGE
 #include "pledge.hpp"
 #endif
 
-#endif /* COMPAT_H */
+#endif /* COMPAT_HPP */
