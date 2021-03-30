@@ -12,7 +12,6 @@
 
 #include <err.h>
 #include <getopt.h>
-#include <inttypes.h>
 #include <string.h>
 #include <sys/stat.h>
 
