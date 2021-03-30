@@ -14,10 +14,8 @@
 #include <getopt.h>
 #include <inttypes.h>
 #include <signal.h>
-#include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
-#include <sys/types.h>
 
 #include <chrono>
 #include <iostream>
