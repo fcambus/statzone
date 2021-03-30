@@ -40,10 +40,6 @@ endif(ENABLE_SECCOMP)
 # Additional include directories for compat functions
 include_directories("compat")
 
-# uthash
-find_path(UTHASH_INCLUDE_DIRS uthash.h)
-include_directories(${UTHASH_INCLUDE_DIRS})
-
 set(SRC src/statzone.cpp src/strtolower.cpp)
 
 if(NOT HAVE_PLEDGE)
