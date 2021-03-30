@@ -11,7 +11,7 @@
  */
 
 #include <ctype.h>
-#include "strtolower.h"
+#include "strtolower.hpp"
 
 char *
 strtolower(char *str)

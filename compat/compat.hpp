@@ -2,7 +2,7 @@
 #define COMPAT_H
 
 #ifndef HAVE_PLEDGE
-#include "pledge.h"
+#include "pledge.hpp"
 #endif
 
 #endif /* COMPAT_H */

@@ -30,9 +30,9 @@
 #include "seccomp.h"
 #endif
 
-#include "compat.h"
-#include "config.h"
-#include "strtolower.h"
+#include "compat.hpp"
+#include "config.hpp"
+#include "strtolower.hpp"
 
 std::chrono::steady_clock::time_point begin, current, elapsed;
 struct results results;
