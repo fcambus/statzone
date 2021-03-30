@@ -13,11 +13,11 @@
 #include <err.h>
 #include <getopt.h>
 #include <inttypes.h>
-#include <signal.h>
 #include <string.h>
 #include <sys/stat.h>
 
 #include <chrono>
+#include <csignal>
 #include <iostream>
 #include <string>
 #include <unordered_set>
@@ -56,6 +56,14 @@ summary()
 	std::cerr << " seconds." << std::endl;
 }
 
+#ifdef SIGINFO
+void
+siginfo_handler(int signum)
+{
+	summary();
+}
+#endif
+
 int
 main(int argc, char *argv[])
 {
@@ -90,7 +98,7 @@ main(int argc, char *argv[])
 #endif
 
 #ifdef SIGINFO
-	signal(SIGINFO, summary);
+	signal(SIGINFO, siginfo_handler);
 #endif
 
 	while ((opt = getopt(argc, argv, "hv")) != -1) {
