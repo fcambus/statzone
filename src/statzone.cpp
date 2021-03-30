@@ -18,10 +18,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
-#include <sys/time.h>
 #include <sys/types.h>
-#include <time.h>
 
+#include <chrono>
+#include <iostream>
 #include <string>
 #include <unordered_set>
 
@@ -35,7 +35,7 @@
 #include "config.h"
 #include "strtolower.h"
 
-struct timespec begin, current, elapsed;
+std::chrono::steady_clock::time_point begin, current, elapsed;
 struct results results;
 
 static void
@@ -57,13 +57,12 @@ static void
 summary()
 {
 	/* Stopping timer */
-	clock_gettime(CLOCK_MONOTONIC, &current);
-	timespecsub(&current, &begin, &elapsed);
+	current = std::chrono::steady_clock::now();
 
 	/* Print summary */
-	fprintf(stderr, "Processed %" PRIu64 " lines in %f seconds.\n",
-	    results.processedLines,
-	    elapsed.tv_sec + elapsed.tv_nsec / 1E9);
+	std::cerr << "Processed " << results.processedLines << " lines in ";
+	std::cerr << std::chrono::duration_cast<std::chrono::microseconds>(current - begin).count() / 1E6;
+	std::cerr << " seconds." << std::endl;
 }
 
 int
@@ -123,7 +122,7 @@ main(int argc, char *argv[])
 	}
 
 	/* Starting timer */
-	clock_gettime(CLOCK_MONOTONIC, &begin);
+	begin = std::chrono::steady_clock::now();
 
 	/* Open zone file */
 	if (!strcmp(input, "-")) {
