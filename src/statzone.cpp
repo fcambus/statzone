@@ -38,12 +38,6 @@ std::chrono::steady_clock::time_point begin, current, elapsed;
 struct results results;
 
 static void
-error(const char *str)
-{
-	errx(EXIT_FAILURE, "%s", str);
-}
-
-static void
 usage()
 {
 	printf("statzone [-hv] zonefile\n\n" \
