@@ -31,8 +31,6 @@
 #include "seccomp.h"
 #endif
 
-#include <uthash.h>
-
 #include "compat.h"
 #include "config.h"
 #include "strtolower.h"
@@ -72,11 +70,6 @@ int
 main(int argc, char *argv[])
 {
 	struct stat zonefile_stat;
-
-	struct domain {
-		char *domain;
-		UT_hash_handle hh;
-	};
 
 	std::unordered_set<std::string> signed_domains;
 	std::unordered_set<std::string> unique_ns;
