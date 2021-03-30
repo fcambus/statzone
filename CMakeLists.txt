@@ -4,7 +4,7 @@
 # https://www.statdns.com
 #
 # Created: 2012-02-13
-# Last Updated: 2020-10-24
+# Last Updated: 2021-03-30
 #
 # StatZone is released under the BSD 2-Clause license
 # See LICENSE file for details.
@@ -12,7 +12,7 @@
 
 cmake_minimum_required (VERSION 2.6)
 
-project (statzone C)
+project (statzone CXX)
 
 include(CheckFunctionExists)
 include(GNUInstallDirs)
@@ -44,13 +44,13 @@ include_directories("compat")
 find_path(UTHASH_INCLUDE_DIRS uthash.h)
 include_directories(${UTHASH_INCLUDE_DIRS})
 
-set(SRC src/statzone.c src/strtolower.c)
+set(SRC src/statzone.cpp src/strtolower.cpp)
 
 if(NOT HAVE_PLEDGE)
-  set (SRC ${SRC} compat/pledge.c)
+  set (SRC ${SRC} compat/pledge.cpp)
 endif()
 
-add_definitions(-D_GNU_SOURCE -Wall -Wextra -std=c99 -pedantic)
+add_definitions(-D_GNU_SOURCE -Wall -Wextra -pedantic)
 add_executable(statzone ${SRC})
 
 install(TARGETS statzone DESTINATION ${CMAKE_INSTALL_BINDIR})
