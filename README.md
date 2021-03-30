@@ -16,7 +16,7 @@ and Honggfuzz.
 
 ## Dependencies
 
-StatZone uses the CMake build system and requires uthash header files.
+StatZone uses the CMake build system.
 
 ## Building
 
