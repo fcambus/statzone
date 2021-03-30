@@ -75,7 +75,8 @@ main(int argc, char *argv[])
 	int opt, token_count;
 
 	char linebuffer[LINE_LENGTH_MAX];
-	char *input, *domain, *previous_domain = NULL;
+	char *input;
+	std::string domain, previous_domain;
 	char *rdata, *token = NULL, *token_lc = NULL;
 
 	FILE *zonefile;
@@ -194,18 +195,14 @@ main(int argc, char *argv[])
 			if (!strcmp(token_lc, "ns")) {
 				results.ns++;
 
-				if (previous_domain == NULL ||
-				    strlen(previous_domain) != strlen(domain) ||
-				    strncmp(domain, previous_domain, strlen(domain))) {
+				if (previous_domain.empty() ||
+				    previous_domain.length() != domain.length() ||
+				    strncmp(domain.c_str(), previous_domain.c_str(), domain.length())) {
 					results.domains++;
 
-					free(previous_domain);
-					previous_domain = strdup(domain);
+					previous_domain = domain;
 
-					if (previous_domain == NULL)
-						error("Memory allocation error.");
-
-					if (!strncmp(domain, "xn--", 4))
+					if (!strncmp(domain.c_str(), "xn--", 4))
 						results.idn++;
 				}
 
@@ -245,7 +242,6 @@ main(int argc, char *argv[])
 	summary();
 
 	/* Clean up */
-	free(previous_domain);
 	fclose(zonefile);
 
 	return EXIT_SUCCESS;
