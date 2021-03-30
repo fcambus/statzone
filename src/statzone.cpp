@@ -15,7 +15,6 @@
 #include <inttypes.h>
 #include <signal.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -231,16 +230,16 @@ main(int argc, char *argv[])
 		results.domains--;
 
 	/* Printing CVS values */
-	fprintf(stdout, "---[ CSV values ]--------------------------------------------------------------\n");
-	fprintf(stdout, "IPv4 Glue,IPv6 Glue,NS,Unique NS,DS,Signed,IDNs,Domains\n");
-	fprintf(stdout, "%" PRIu64 ",", results.a);
-	fprintf(stdout, "%" PRIu64 ",", results.aaaa);
-	fprintf(stdout, "%" PRIu64 ",", results.ns);
-	fprintf(stdout, "%lu,", unique_ns.size());
-	fprintf(stdout, "%" PRIu64 ",", results.ds);
-	fprintf(stdout, "%lu,", signed_domains.size());
-	fprintf(stdout, "%" PRIu64 ",", results.idn);
-	fprintf(stdout, "%" PRIu64 "\n", results.domains);
+	std::cout << "---[ CSV values ]--------------------------------------------------------------" << std::endl;
+	std::cout << "IPv4 Glue,IPv6 Glue,NS,Unique NS,DS,Signed,IDNs,Domains" << std::endl;
+	std::cout << results.a << ",";
+	std::cout << results.aaaa << ",";
+	std::cout << results.ns << ",";
+	std::cout << unique_ns.size() << ",";
+	std::cout << results.ds << ",";
+	std::cout << signed_domains.size() << ",";
+	std::cout << results.idn << ",";
+	std::cout << results.domains << std::endl;
 
 	/* Printing results */
 	summary();
