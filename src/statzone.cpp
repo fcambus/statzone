@@ -187,14 +187,12 @@ main(int argc, char *argv[])
 			if (!strcmp(token_lc, "ns")) {
 				results.ns++;
 
-				if (previous_domain.empty() ||
-				    previous_domain.length() != domain.length() ||
-				    strncmp(domain.c_str(), previous_domain.c_str(), domain.length())) {
+				if (domain.compare(previous_domain)) {
 					results.domains++;
 
 					previous_domain = domain;
 
-					if (!strncmp(domain.c_str(), "xn--", 4))
+					if (!domain.compare(0, 4, "xn--"))
 						results.idn++;
 				}
 
