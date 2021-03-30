@@ -46,7 +46,7 @@ if(NOT HAVE_PLEDGE)
   set (SRC ${SRC} compat/pledge.cpp)
 endif()
 
-add_definitions(-D_GNU_SOURCE -Wall -Wextra -std=c++11 -pedantic)
+add_definitions(-Wall -Wextra -std=c++11 -pedantic)
 add_executable(statzone ${SRC})
 
 install(TARGETS statzone DESTINATION ${CMAKE_INSTALL_BINDIR})
