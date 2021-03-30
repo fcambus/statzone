@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2021-02-15
+ * Last Updated: 2021-03-30
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -21,6 +21,9 @@
 #include <sys/time.h>
 #include <sys/types.h>
 #include <time.h>
+
+#include <string>
+#include <unordered_set>
 
 #ifdef HAVE_SECCOMP
 #include <sys/prctl.h>
@@ -75,8 +78,8 @@ main(int argc, char *argv[])
 		UT_hash_handle hh;
 	};
 
-	struct domain *ds = NULL, *signed_domains = NULL;
-	struct domain *ns = NULL, *unique_ns = NULL;
+	std::unordered_set<std::string> signed_domains;
+	std::unordered_set<std::string> unique_ns;
 
 	int opt, token_count;
 
@@ -194,19 +197,7 @@ main(int argc, char *argv[])
 			if (token_count && !strcmp(token_lc, "ds")) {
 				results.ds++;
 
-				HASH_FIND_STR(signed_domains, domain, ds);
-
-				if (!ds) {
-					ds = malloc(sizeof(struct domain));
-					if (ds == NULL)
-						error("Memory allocation error.");
-
-					ds->domain = strdup(domain);
-					if (ds->domain == NULL)
-						error("Memory allocation error.");
-
-					HASH_ADD_STR(signed_domains, domain, ds);
-				}
+				signed_domains.insert(domain);
 			}
 
 			if (!strcmp(token_lc, "ns")) {
@@ -232,21 +223,8 @@ main(int argc, char *argv[])
 				if (rdata && strchr(rdata, ' '))
 					rdata = strtok(NULL, "\n");
 
-				if (rdata) {
-					HASH_FIND_STR(unique_ns, rdata, ns);
-
-					if (!ns) {
-						ns = malloc(sizeof(struct domain));
-						if (ns == NULL)
-							error("Memory allocation error.");
-
-						ns->domain = strdup(rdata);
-						if (ns->domain == NULL)
-							error("Memory allocation error.");
-
-						HASH_ADD_STR(unique_ns, domain, ns);
-					}
-				}
+				if (rdata)
+					unique_ns.insert(rdata);
 			}
 
 			token = strtok(NULL, " \t");
@@ -266,9 +244,9 @@ main(int argc, char *argv[])
 	fprintf(stdout, "%" PRIu64 ",", results.a);
 	fprintf(stdout, "%" PRIu64 ",", results.aaaa);
 	fprintf(stdout, "%" PRIu64 ",", results.ns);
-	fprintf(stdout, "%u,", HASH_COUNT(unique_ns));
+	fprintf(stdout, "%lu,", unique_ns.size());
 	fprintf(stdout, "%" PRIu64 ",", results.ds);
-	fprintf(stdout, "%u,", HASH_COUNT(signed_domains));
+	fprintf(stdout, "%lu,", signed_domains.size());
 	fprintf(stdout, "%" PRIu64 ",", results.idn);
 	fprintf(stdout, "%" PRIu64 "\n", results.domains);
 
