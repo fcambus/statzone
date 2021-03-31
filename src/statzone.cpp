@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2021-03-30
+ * Last Updated: 2021-03-31
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -27,7 +27,6 @@
 #include "seccomp.h"
 #endif
 
-#include "compat.hpp"
 #include "config.hpp"
 #include "strtolower.hpp"
 
@@ -79,10 +78,6 @@ main(int argc, char *argv[])
 	char *rdata, *token = NULL, *token_lc = NULL;
 
 	FILE *zonefile;
-
-	if (pledge("stdio rpath", NULL) == -1) {
-		err(EXIT_FAILURE, "pledge");
-	}
 
 #ifdef HAVE_SECCOMP
 	if (prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0)) {

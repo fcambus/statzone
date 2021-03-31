@@ -8,11 +8,10 @@ domains, and total number of domains.
 
 It is currently used to generate TLD Zone File Statistics on [StatDNS][1].
 
-StatZone is written with security in mind and is running sandboxed on OpenBSD
-(using pledge). Experimental seccomp support is available for selected
-architectures and can be enabled by setting the `ENABLE_SECCOMP` variable
-to `1` when invoking CMake. It has also been extensively fuzzed using AFL
-and Honggfuzz.
+StatZone is written with security in mind, and has also been extensively
+fuzzed using AFL and Honggfuzz. Experimental seccomp support is available
+for selected architectures and can be enabled by setting the `ENABLE_SECCOMP`
+variable to `1` when invoking CMake.
 
 ## Dependencies
 
