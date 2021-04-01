@@ -1,5 +1,5 @@
 /*
- * StatZone 1.0.5
+ * StatZone 1.1.0
  * Copyright (c) 2012-2021, Frederic Cambus
  * https://www.statdns.com
  *
@@ -13,7 +13,7 @@
 #ifndef CONFIG_HPP
 #define CONFIG_HPP
 
-#define VERSION "StatZone 1.0.5"
+#define VERSION "StatZone 1.1.0"
 
 #define LINE_LENGTH_MAX 65536
 

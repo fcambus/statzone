@@ -1,5 +1,5 @@
 /*
- * StatZone 1.0.5
+ * StatZone 1.1.0
  * Copyright (c) 2012-2021, Frederic Cambus
  * https://www.statdns.com
  *
