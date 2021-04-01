@@ -1,3 +1,23 @@
+StatZone 1.1.0 (2021-04-01)
+
+- Remove "USAGE:" prefix when displaying usage information
+- Add missing periods when displaying options in usage(), sync README
+- StatZone is now a C++ project and requires a C++11 compiler
+- Use std::unordered_set instead of uthash to count unique strings
+- Remove now unneeded dependency on uthash
+- Use std::chrono to calculate elapsed time in summary()
+- Remove now unneeded timespecsub macro in compat header
+- Remove now unneeded CLOCK_MONOTONIC fallback macro in compat header
+- Use iostream to output CSV values
+- Start using std::string for domain and previous_domain
+- Remove now unused error() function
+- Use std::basic_string::compare instead of strncmp(3)
+- Add a signal handler for SIGINFO, wrapping summary()
+- Remove pledge() support and get rid of the compat directory entirely
+- Bump CMake minimum required version to 2.8.12
+
+
+
 StatZone 1.0.5 (2021-02-08)
 
 - Stop forcing FORTIFY_SOURCE level 2, it should be package builders decision
