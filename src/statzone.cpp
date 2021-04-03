@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2021-03-31
+ * Last Updated: 2021-04-03
  *
  * StatZone is released under the BSD 2-Clause license
  * See LICENSE file for details.
@@ -75,7 +75,7 @@ main(int argc, char *argv[])
 	char linebuffer[LINE_LENGTH_MAX];
 	char *input;
 	std::string domain, previous_domain;
-	char *rdata, *token = NULL, *token_lc = NULL;
+	char *rdata, *token = nullptr, *token_lc = nullptr;
 
 	FILE *zonefile;
 
@@ -154,23 +154,23 @@ main(int argc, char *argv[])
 
 		while (token) {
 			if (*token == ';') { /* Comments */
-				token = NULL;
+				token = nullptr;
 				continue;
 			}
 
 			token_lc = strtolower(token);
 			if (token_count && !strcmp(token_lc, "nsec")) {
-				token = NULL;
+				token = nullptr;
 				continue;
 			}
 
 			if (token_count && !strcmp(token_lc, "nsec3")) {
-				token = NULL;
+				token = nullptr;
 				continue;
 			}
 
 			if (token_count && !strcmp(token_lc, "rrsig")) {
-				token = NULL;
+				token = nullptr;
 				continue;
 			}
 
@@ -198,16 +198,16 @@ main(int argc, char *argv[])
 						results.idn++;
 				}
 
-				rdata = strtok(NULL, "\n");
+				rdata = strtok(nullptr, "\n");
 
 				if (rdata && strchr(rdata, ' '))
-					rdata = strtok(NULL, "\n");
+					rdata = strtok(nullptr, "\n");
 
 				if (rdata)
 					unique_ns.insert(rdata);
 			}
 
-			token = strtok(NULL, " \t");
+			token = strtok(nullptr, " \t");
 			token_count++;
 		}
 
