@@ -4,22 +4,21 @@
 # https://www.statdns.com
 #
 # Created: 2012-02-13
-# Last Updated: 2021-03-31
+# Last Updated: 2021-04-04
 #
 # StatZone is released under the BSD 2-Clause license
 # See LICENSE file for details.
 #
 
-cmake_minimum_required (VERSION 2.8.12)
+cmake_minimum_required(VERSION 2.8.12)
 
-project (statzone CXX)
+project(statzone CXX)
 
 include(CheckFunctionExists)
 include(GNUInstallDirs)
 
 # Conditional build options
-set(ENABLE_SECCOMP 0
-    CACHE BOOL "Enable building with seccomp")
+set(ENABLE_SECCOMP 0 CACHE BOOL "Enable building with seccomp")
 
 if(ENABLE_SECCOMP)
   # Check if system has seccomp
