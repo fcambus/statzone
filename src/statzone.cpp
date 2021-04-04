@@ -45,7 +45,7 @@ usage()
 static void
 summary()
 {
-	/* Stopping timer */
+	/* Get current timer value */
 	current = std::chrono::steady_clock::now();
 
 	/* Print summary */
