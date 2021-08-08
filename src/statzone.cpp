@@ -13,7 +13,6 @@
 #include <err.h>
 #include <getopt.h>
 #include <string.h>
-#include <sys/stat.h>
 
 #include <chrono>
 #include <csignal>
@@ -65,8 +64,6 @@ siginfo_handler(int signum)
 int
 main(int argc, char *argv[])
 {
-	struct stat zonefile_stat;
-
 	std::unordered_set<std::string> signed_domains;
 	std::unordered_set<std::string> unique_ns;
 
@@ -128,12 +125,6 @@ main(int argc, char *argv[])
 			perror("Can't open zone file");
 			return EXIT_FAILURE;
 		}
-	}
-
-	/* Get zone file size */
-	if (fstat(fileno(zonefile), &zonefile_stat)) {
-		perror("Can't stat zone file");
-		return EXIT_FAILURE;
 	}
 
 	while (fgets(linebuffer, LINE_LENGTH_MAX, zonefile)) {
