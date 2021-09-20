@@ -6,7 +6,7 @@
 # Created: 2012-02-13
 # Last Updated: 2021-04-04
 #
-# StatZone is released under the BSD 2-Clause license
+# StatZone is released under the BSD 2-Clause license.
 # See LICENSE file for details.
 #
 # SPDX-License-Identifier: BSD-2-Clause
