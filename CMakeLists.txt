@@ -4,7 +4,7 @@
 # https://www.statdns.com
 #
 # Created: 2012-02-13
-# Last Updated: 2021-04-04
+# Last Updated: 2021-10-18
 #
 # StatZone is released under the BSD 2-Clause license.
 # See LICENSE file for details.
@@ -12,7 +12,11 @@
 # SPDX-License-Identifier: BSD-2-Clause
 #
 
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.1)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 project(statzone CXX)
 
@@ -36,7 +40,7 @@ endif(ENABLE_SECCOMP)
 
 set(SRC src/statzone.cpp src/strtolower.cpp)
 
-add_definitions(-Wall -Wextra -std=c++11 -pedantic)
+add_definitions(-Wall -Wextra -pedantic)
 add_executable(statzone ${SRC})
 
 install(TARGETS statzone DESTINATION ${CMAKE_INSTALL_BINDIR})
