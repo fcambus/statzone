@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2021-04-03
+ * Last Updated: 2021-11-16
  *
  * StatZone is released under the BSD 2-Clause license.
  * See LICENSE file for details.
@@ -71,7 +71,9 @@ main(int argc, char *argv[])
 
 	int opt, token_count;
 
-	char linebuffer[LINE_LENGTH_MAX];
+	char *linebuffer = NULL;
+	size_t linesize = 0;
+
 	char *input;
 	std::string domain, previous_domain;
 	char *rdata, *token = nullptr, *token_lc = nullptr;
@@ -129,7 +131,7 @@ main(int argc, char *argv[])
 		}
 	}
 
-	while (fgets(linebuffer, LINE_LENGTH_MAX, zonefile)) {
+	while (getline(&linebuffer, &linesize, zonefile) != -1) {
 		if (!*linebuffer)
 			continue;
 
@@ -227,6 +229,7 @@ main(int argc, char *argv[])
 	summary();
 
 	/* Clean up */
+	free(linebuffer);
 	fclose(zonefile);
 
 	return EXIT_SUCCESS;
