@@ -1,3 +1,16 @@
+StatZone 1.1.1 (2021-11-16)
+
+- Switch to using nullptr instead of NULL
+- Fix erroneous comment about timer value in summary()
+- Remove code to get zone file size, it's unused
+- Update the arpa.zone copy used for testing
+- Add SPDX short license identifier in source file
+- Use CMAKE_CXX_STANDARD instead of hardcoding compiler flags
+- Remove dependency on uthash, it is not used anymore
+- Switch to using getline(3) instead of fgets(3)
+
+
+
 StatZone 1.1.0 (2021-04-01)
 
 - Remove "USAGE:" prefix when displaying usage information
