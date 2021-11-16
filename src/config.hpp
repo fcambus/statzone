@@ -1,5 +1,5 @@
 /*
- * StatZone 1.1.0
+ * StatZone 1.1.1
  * Copyright (c) 2012-2021, Frederic Cambus
  * https://www.statdns.com
  *
@@ -15,7 +15,7 @@
 #ifndef CONFIG_HPP
 #define CONFIG_HPP
 
-#define VERSION "StatZone 1.1.0"
+#define VERSION "StatZone 1.1.1"
 
 struct results {
 	uint64_t processedLines;
