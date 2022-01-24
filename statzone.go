@@ -1,16 +1,16 @@
-/*****************************************************************************/
-/*                                                                           */
-/* StatZone                                                                  */
-/* Copyright (c) 2012-2017, Frederic Cambus                                  */
-/* https://www.statdns.com                                                   */
-/*                                                                           */
-/* Created: 2012-02-13                                                       */
-/* Last Updated: 2017-05-20                                                  */
-/*                                                                           */
-/* StatZone is released under the BSD 2-Clause license.                      */
-/* See LICENSE file for details.                                             */
-/*                                                                           */
-/*****************************************************************************/
+/*
+ * StatZone 1.1.1
+ * Copyright (c) 2012-2022, Frederic Cambus
+ * https://www.statdns.com
+ *
+ * Created: 2012-02-13
+ * Last Updated: 2022-01-24
+ *
+ * StatZone is released under the BSD 2-Clause license.
+ * See LICENSE file for details.
+ *
+ * SPDX-License-Identifier: BSD-2-Clause
+ */
 
 package main
 
