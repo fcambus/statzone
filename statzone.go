@@ -59,31 +59,31 @@ func main() {
 		fmt.Println("ERROR: Can't open zone file.")
 	}
 
-	zone := dns.ParseZone(bufio.NewReader(zoneFile), "", "")
+	z := dns.NewZoneParser(bufio.NewReader(zoneFile), "", "")
 
 	var rrtypes [65536]int
 
-	for parsedLine := range zone {
-		if parsedLine.RR != nil {
-			rrtypes[parsedLine.RR.Header().Rrtype]++
+	for parsedLine, ok := z.Next(); ok; parsedLine, ok = z.Next() {
+		if parsedLine != nil {
+			rrtypes[parsedLine.Header().Rrtype]++
 
-			switch parsedLine.RR.Header().Rrtype {
+			switch parsedLine.Header().Rrtype {
 			case dns.TypeDS:
 				/* Increment Signed Domains counter */
-				signed[parsedLine.RR.Header().Name]++
+				signed[parsedLine.Header().Name]++
 			case dns.TypeNS:
 				/* Increment NS counter */
 				ns[rdata(parsedLine)]++
 
-				if parsedLine.RR.Header().Name != domains.previous { // Unique domain
+				if parsedLine.Header().Name != domains.previous { // Unique domain
 
 					/* Increment Domain counter */
 					domains.count++
-					domains.previous = parsedLine.RR.Header().Name
+					domains.previous = parsedLine.Header().Name
 
 					/* Check if the domain is an IDN */
 
-					if strings.HasPrefix(strings.ToLower(parsedLine.RR.Header().Name), "xn--") {
+					if strings.HasPrefix(strings.ToLower(parsedLine.Header().Name), "xn--") {
 						domains.idn++
 					}
 
