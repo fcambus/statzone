@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2021-11-16
+ * Last Updated: 2022-02-10
  *
  * StatZone is released under the BSD 2-Clause license.
  * See LICENSE file for details.
@@ -12,7 +12,6 @@
  * SPDX-License-Identifier: BSD-2-Clause
  */
 
-#include <err.h>
 #include <getopt.h>
 #include <string.h>
 
