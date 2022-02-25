@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2022-02-10
+ * Last Updated: 2022-02-25
  *
  * StatZone is released under the BSD 2-Clause license.
  * See LICENSE file for details.
@@ -36,9 +36,9 @@ struct results results;
 static void
 usage()
 {
-	printf("statzone [-hv] zonefile\n\n" \
-	    "The options are as follows:\n\n" \
-	    "	-h	Display usage.\n" \
+	printf("statzone [-hv] zonefile\n\n"
+	    "The options are as follows:\n\n"
+	    "	-h	Display usage.\n"
 	    "	-v	Display version.\n");
 }
 
