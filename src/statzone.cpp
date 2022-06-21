@@ -4,7 +4,7 @@
  * https://www.statdns.com
  *
  * Created: 2012-02-13
- * Last Updated: 2022-02-25
+ * Last Updated: 2022-06-21
  *
  * StatZone is released under the BSD 2-Clause license.
  * See LICENSE file for details.
@@ -13,10 +13,10 @@
  */
 
 #include <getopt.h>
-#include <string.h>
 
 #include <chrono>
 #include <csignal>
+#include <cstring>
 #include <iostream>
 #include <string>
 #include <unordered_set>
