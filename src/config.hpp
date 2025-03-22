@@ -1,6 +1,6 @@
 /*
  * StatZone 1.1.1
- * Copyright (c) 2012-2023, Frederic Cambus
+ * Copyright (c) 2012-2025, Frederic Cambus
  * https://www.statdns.com
  *
  * Created: 2012-02-13
