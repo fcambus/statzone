@@ -1,3 +1,14 @@
+StatZone 1.1.2 (2025-03-24)
+
+- Remove unneeded <err.h> include
+- Remove useless backslashes in usage()
+- Use C++ <cname> headers in a few more places
+- Move manual page to the man directory
+- Bump cmake_minimum_required to 3.5, to allow building with CMake 4.0
+- Bump cmake_minimum_required to 3.10 to be more future proof
+
+
+
 StatZone 1.1.1 (2021-11-16)
 
 - Switch to using nullptr instead of NULL
